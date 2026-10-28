@@ -4,178 +4,160 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080d18">
-  <title>ArmaPC MX | Configura tu PC ideal</title>
+  <meta name="description" content="Encuentra una PC armada según tu presupuesto en pesos mexicanos con ArmaPC MX.">
+  <title>ArmaPC MX | Encuentra tu PC ideal</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <header class="topbar">
+    <a class="logo" href="#inicio"><span class="logo-icon">A</span> ArmaPC <span>MX</span></a>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#configurador">Configurar PC</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#nosotros">Nosotros</a>
+    </nav>
+  </header>
 
-<header class="navbar">
-  <a href="#" class="logo">🖥️ ArmaPC <span>MX</span></a>
-  <nav>
-    <a href="#configurador">Configurador</a>
-    <a href="#resultados">Componentes</a>
-    <a href="#nosotros">Acerca de</a>
-  </nav>
-  <a href="#configurador" class="nav-button">Armar mi PC ↗️</a>
-</header>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <span class="eyebrow">TU DINERO, TU PRÓXIMA PC</span>
+        <h1>Arma la PC ideal<br>para <span>tu presupuesto.</span></h1>
+        <p>Encuentra componentes para jugar, estudiar, trabajar o crear contenido sin gastar más de lo que tienes.</p>
+        <a class="primary-button" href="#configurador">Encontrar mi PC <span>→</span></a>
+        <div class="hero-points">
+          <span>✓ Presupuesto personalizado</span>
+          <span>✓ Componentes desglosados</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img
+          src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=85"
+          alt="Computadora de escritorio para gaming"
+          onerror="this.style.display='none'"
+        >
+        <div class="floating-label"><span class="status-dot"></span> Encuentra tu próxima PC</div>
+      </div>
+    </section>
 
-<section class="hero">
-  <div class="hero-text">
-    <span class="eyebrow">TU PRESUPUESTO · TU PRÓXIMA PC</span>
-    <h1>Arma tu PC ideal.<br><span>A tu manera.</span></h1>
-    <p>Descubre qué computadora puedes armar según tu presupuesto. Encuentra componentes, conoce sus especificaciones y planea tu próxima actualización.</p>
-    <a href="#configurador" class="button">🚀 Configurar mi PC</a>
-    <div class="hero-points">
-      <span>✓ Presupuestos en MXN</span>
-      <span>✓ Componentes detallados</span>
-      <span>✓ Para gaming y trabajo</span>
-    </div>
-  </div>
-
-  <div class="hero-image">
-    <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=1200&q=85" alt="Computadora gamer con iluminación RGB">
-    <div class="image-badge">
-      <span>⚡</span>
-      <div><strong>Tu próximo setup</strong><small>Diseñado para tu presupuesto</small></div>
-    </div>
-  </div>
-</section>
-
-<section class="config-section" id="configurador">
-  <div class="section-title">
-    <span class="eyebrow">CONFIGURADOR INTELIGENTE</span>
-    <h2>¿Cuánto quieres invertir?</h2>
-    <p>Personaliza tu búsqueda y encuentra una configuración inicial.</p>
-  </div>
-
-  <div class="config-layout">
-    <form id="config-form" class="config-card">
-      <label for="presupuesto">Tu presupuesto máximo</label>
-      <div class="money-input">
-        <span>$</span>
-        <input id="presupuesto" type="number" min="4000" max="100000" step="500" value="12000" required>
-        <span class="currency">MXN</span>
+    <section class="config-section section" id="configurador">
+      <div class="section-heading">
+        <span class="eyebrow">CONFIGURADOR INTELIGENTE</span>
+        <h2>¿Cuánto quieres invertir?</h2>
+        <p>Escribe una cantidad o elige uno de los presupuestos rápidos.</p>
       </div>
 
-      <div class="presets">
-        <button type="button" data-budget="6000">$6,000</button>
-        <button type="button" data-budget="10000">$10,000</button>
-        <button type="button" data-budget="15000">$15,000</button>
-        <button type="button" data-budget="25000">$25,000</button>
+      <form id="config-form">
+        <div class="config-card">
+          <label for="presupuesto">Tu presupuesto máximo (MXN)</label>
+          <div class="money-input">
+            <span>$</span>
+            <input
+              type="number"
+              id="presupuesto"
+              name="presupuesto"
+              min="4000"
+              max="100000"
+              step="100"
+              value="10000"
+              placeholder="Ej. 10000"
+              required
+            >
+            <span class="currency">MXN</span>
+          </div>
+
+          <div class="budget-buttons">
+            <button type="button" data-budget="6000">$6,000</button>
+            <button type="button" data-budget="8000">$8,000</button>
+            <button type="button" data-budget="10000">$10,000</button>
+            <button type="button" data-budget="12000">$12,000</button>
+            <button type="button" data-budget="15000">$15,000</button>
+            <button type="button" data-budget="20000">$20,000</button>
+          </div>
+
+          <fieldset class="usage-field">
+            <legend>¿Para qué usarás tu PC?</legend>
+            <div class="usage-options">
+              <label class="usage-option">
+                <input type="radio" name="uso" value="gaming" checked>
+                <span class="usage-emoji">🎮</span>
+                <span><strong>Gaming</strong><small>Juegos y entretenimiento</small></span>
+              </label>
+              <label class="usage-option">
+                <input type="radio" name="uso" value="trabajo">
+                <span class="usage-emoji">💻</span>
+                <span><strong>Trabajo y estudio</strong><small>Escuela y oficina</small></span>
+              </label>
+              <label class="usage-option">
+                <input type="radio" name="uso" value="creacion">
+                <span class="usage-emoji">🎬</span>
+                <span><strong>Creación</strong><small>Edición y streaming</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <button class="primary-button submit-button" type="submit">
+            Encontrar mi PC <span>→</span>
+          </button>
+          <p class="form-note">El sistema buscará una configuración registrada que no supere tu presupuesto.</p>
+        </div>
+      </form>
+    </section>
+
+    <section class="results-section section" id="resultados" hidden>
+      <div class="section-heading results-heading">
+        <span class="eyebrow">TU CONFIGURACIÓN</span>
+        <h2>Esta PC se ajusta a tu presupuesto</h2>
+        <p id="resultado-descripcion">Aquí aparecerán los componentes seleccionados.</p>
       </div>
 
-      <label class="usage-label">¿Para qué utilizarás tu PC?</label>
+      <div id="component-list" aria-live="polite"></div>
 
-      <div class="usage-options">
-        <label class="usage-option">
-          <input type="radio" name="uso" value="gaming" checked>
-          <span class="usage-icon">🎮</span>
-          <span><strong>Gaming</strong><small>Juegos y streaming</small></span>
-        </label>
-
-        <label class="usage-option">
-          <input type="radio" name="uso" value="trabajo">
-          <span class="usage-icon">💻</span>
-          <span><strong>Trabajo y estudio</strong><small>Oficina y multitarea</small></span>
-        </label>
-
-        <label class="usage-option">
-          <input type="radio" name="uso" value="creacion">
-          <span class="usage-icon">🎬</span>
-          <span><strong>Creación de contenido</strong><small>Edición y diseño</small></span>
-        </label>
+      <div class="results-actions">
+        <button type="button" class="secondary-button" id="volver-configurar">← Cambiar presupuesto</button>
+        <button type="button" class="primary-button" id="imprimir-resultados">Guardar o imprimir PDF ↓</button>
       </div>
+    </section>
 
-      <button type="submit" class="button submit-button">Encontrar mi PC <span>→</span></button>
-      <p class="small-note">Los precios son estimaciones orientativas, no cotizaciones en tiempo real.</p>
-    </form>
-
-    <div class="config-picture">
-      <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=900&q=85" alt="Escritorio con computadora">
-      <div class="picture-caption">
-        <span>ARMAPC MX / BUILDER</span>
-        <h3>La computadora correcta empieza con una buena elección.</h3>
+    <section class="benefits-section section">
+      <div class="section-heading">
+        <span class="eyebrow">¿POR QUÉ ARMAPC MX?</span>
+        <h2>Compra con una idea más clara</h2>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="resultados" class="results-section" hidden>
-  <div class="section-title results-title">
-    <span class="eyebrow">TU CONFIGURACIÓN RECOMENDADA</span>
-    <h2>Esta PC podría ser para ti.</h2>
-    <p id="results-subtitle"></p>
-  </div>
-
-  <div class="summary-grid">
-    <div class="summary-card highlight">
-      <span>PRECIO ESTIMADO</span>
-      <strong id="total-price">$0</strong>
-      <small id="budget-status"></small>
-      <div class="progress"><span id="budget-fill"></span></div>
-      <small id="budget-used"></small>
-    </div>
-    <div class="summary-card">
-      <span>USO PRINCIPAL</span>
-      <strong id="summary-purpose">Gaming</strong>
-      <small>Perfil seleccionado</small>
-    </div>
-    <div class="summary-card">
-      <span>MEMORIA RAM</span>
-      <strong id="summary-ram">16 GB</strong>
-      <small id="summary-ram-detail">DDR4</small>
-    </div>
-    <div class="summary-card">
-      <span>GRÁFICOS</span>
-      <strong id="summary-graphics">Dedicados</strong>
-      <small id="summary-graphics-detail">Consultar modelo</small>
-    </div>
-  </div>
-
-  <div class="results-layout">
-    <div>
-      <div class="parts-heading">
-        <div><h3>Los componentes de tu PC</h3><p>Características y precio de cada pieza.</p></div>
-        <span class="component-count">7 COMPONENTES</span>
+      <div class="benefit-grid">
+        <article class="benefit-card">
+          <span>💰</span>
+          <h3>Controla tus gastos</h3>
+          <p>Consulta el costo estimado de cada pieza y el total de tu configuración.</p>
+        </article>
+        <article class="benefit-card">
+          <span>🧩</span>
+          <h3>Todo en una lista</h3>
+          <p>Revisa procesador, tarjeta madre, memoria, almacenamiento y demás componentes.</p>
+        </article>
+        <article class="benefit-card">
+          <span>🚀</span>
+          <h3>Elige según tu uso</h3>
+          <p>Compara opciones orientadas a juegos, trabajo o creación de contenido.</p>
+        </article>
       </div>
-      <div id="component-list" class="component-list"></div>
-      <div class="warning">
-        <span>ⓘ</span>
-        <p><strong>Antes de comprar:</strong> confirma que el procesador sea compatible con la placa madre, que la RAM sea del tipo correcto y que la fuente tenga los conectores necesarios. Esta propuesta es orientativa.</p>
+    </section>
+
+    <section class="about-section section" id="nosotros">
+      <div>
+        <span class="eyebrow">SOBRE ARMAPC MX</span>
+        <h2>Tu próxima computadora empieza aquí.</h2>
       </div>
-    </div>
+      <p>ArmaPC MX te ayuda a explorar configuraciones orientativas según tu presupuesto. Antes de comprar, verifica los precios actuales, la disponibilidad y la compatibilidad de cada componente.</p>
+    </section>
+  </main>
 
-    <aside class="pc-preview">
-      <span class="preview-label">VISTA DE TU CONFIGURACIÓN</span>
-      <img id="build-image" src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=1000&q=85" alt="Ejemplo visual de PC armada">
-      <div class="preview-content">
-        <h3>Tu próximo setup</h3>
-        <p>La fotografía es ilustrativa. La apariencia final dependerá del gabinete y los componentes elegidos.</p>
-        <div class="preview-total"><span>Total estimado</span><strong id="preview-total">$0 MXN</strong></div>
-        <button type="button" id="print-build" class="button print-button">Guardar como PDF ↗️</button>
-      </div>
-    </aside>
-  </div>
-
-  <button id="edit-config" class="button edit-button">← Cambiar presupuesto</button>
-  <p class="disclaimer">Los precios son ejemplos editables y pueden variar por tienda, fecha y disponibilidad. Verifica los precios y modelos exactos antes de comprar.</p>
-</section>
-
-<section class="about-section" id="nosotros">
-  <span class="eyebrow">ASÍ DE FÁCIL</span>
-  <h2>De una idea a tu próxima PC.</h2>
-  <div class="about-grid">
-    <article><span>01</span><h3>Define tu presupuesto</h3><p>Establece cuánto quieres invertir en tu computadora.</p></article>
-    <article><span>02</span><h3>Elige tu objetivo</h3><p>Selecciona gaming, trabajo o creación de contenido.</p></article>
-    <article><span>03</span><h3>Compara componentes</h3><p>Consulta las especificaciones y verifica la compatibilidad antes de comprar.</p></article>
-  </div>
-</section>
-
-<footer>
-  <a href="#" class="logo">🖥️ ArmaPC <span>MX</span></a>
-  <p>© 2026 ArmaPC MX · Tu próxima PC comienza aquí.</p>
-</footer>
-
-<script src="script.js"></script>
+  <footer class="footer">
+    <a class="logo" href="#inicio"><span class="logo-icon">A</span> ArmaPC <span>MX</span></a>
+    <p>© <span id="year"></span> ArmaPC MX · Configura con inteligencia.</p>
+    <p class="footer-note">Los precios mostrados son estimaciones de ejemplo, no cotizaciones en tiempo real.</p>
+  </footer>
 </body>
 </html>
