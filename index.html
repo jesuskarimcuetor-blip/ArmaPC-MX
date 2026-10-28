@@ -1,163 +1,463 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080d18">
-  <meta name="description" content="Encuentra una PC armada según tu presupuesto en pesos mexicanos con ArmaPC MX.">
-  <title>ArmaPC MX | Encuentra tu PC ideal</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<title>ArmaPC MX | Encuentra tu PC ideal</title>
+<style>
+:root{--bg:#080d18;--panel:#111b2b;--panel2:#16243a;--border:#2b3d57;--text:#f4f7ff;--muted:#a5b4c9;--blue:#3985ff;--cyan:#39d8f2;--green:#59e3a0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+button,input{font:inherit}button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:15px;padding:15px 6%;background:#080d18f5;border-bottom:1px solid var(--border)}
+.logo{font-size:23px;font-weight:900}.logo span{color:var(--cyan)}
+nav{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+nav a:hover{color:var(--cyan)}
+.hero{padding:75px 7%;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;background:radial-gradient(ellipse at 85% 40%,#164a843c,transparent 55%)}
+.eyebrow{font-size:11px;letter-spacing:2px;color:var(--cyan);font-weight:bold}
+h1{font-size:clamp(38px,5vw,65px);line-height:1.08;letter-spacing:-2px;margin:17px 0}
+h1 span{color:var(--cyan)}
+h2{font-size:clamp(27px,4vw,38px);line-height:1.2;margin:10px 0}
+p{color:var(--muted)}
+.hero p{max-width:560px}
+.hero-image{width:100%;height:330px;object-fit:cover;border-radius:20px;border:1px solid var(--border);background:var(--panel)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:11px;padding:14px 20px;background:linear-gradient(100deg,#2771f4,#248fe7);color:white;font-weight:800}
+.btn:hover{filter:brightness(1.12)}
+.section{padding:65px 7%}
+.heading{text-align:center;max-width:700px;margin:0 auto 30px}
+.heading p{font-size:14px}
+.config-card{max-width:760px;margin:auto;padding:28px;border:1px solid var(--border);border-radius:20px;background:linear-gradient(140deg,#121e30,#0d1523)}
+label,legend{font-weight:bold;font-size:14px}
+.money{display:flex;align-items:center;gap:10px;background:#080f1b;border:1px solid #344762;border-radius:12px;padding:9px 14px;margin-top:8px}
+.money span{font-size:23px;color:var(--green);font-weight:bold}
+.money input{width:100%;min-width:0;border:0;outline:none;background:transparent;color:white;font-size:27px;font-weight:bold}
+.money small{color:var(--muted)}
+.quick{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0 27px}
+.quick button{padding:9px 13px;border-radius:9px;background:var(--panel2);color:white;border:1px solid var(--border);font-weight:bold}
+.quick button.active,.quick button:hover{border-color:var(--cyan);color:var(--cyan)}
+fieldset{border:0;padding:0;margin:0}
+.uses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.use{display:flex;align-items:flex-start;gap:8px;padding:13px 8px;border:1px solid var(--border);border-radius:11px;background:#0b1321;cursor:pointer}
+.use:has(input:checked){border-color:var(--blue);background:#12233b}
+.use input{margin-top:4px;accent-color:var(--blue)}
+.use b,.use small{display:block}
+.use b{font-size:12px}
+.use small{font-size:10px;color:var(--muted)}
+.submit{width:100%;margin-top:24px}
+.notice{font-size:11px;text-align:center;margin-bottom:0}
+#resultados{scroll-margin-top:85px}
+#resultados[hidden]{display:none!important}
+.result-head{text-align:center;margin-bottom:25px}
+.summary{max-width:950px;margin:0 auto 18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.summary div{padding:17px;border:1px solid var(--border);border-radius:13px;background:var(--panel)}
+.summary small{display:block;color:var(--muted)}
+.summary strong{display:block;font-size:22px;color:var(--cyan);overflow-wrap:anywhere}
+.build{max-width:950px;margin:auto;border:1px solid var(--border);border-radius:17px;overflow:hidden;background:var(--panel)}
+.build-head{padding:22px;background:linear-gradient(100deg,#172944,#101827);border-bottom:1px solid var(--border)}
+.build-head h3{font-size:24px;margin:6px 0}
+.build-head p{margin:0;font-size:13px}
+.part{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px;border-bottom:1px solid #253248}
+.part img{width:76px;height:72px;object-fit:cover;border-radius:9px;background:#202d40}
+.part h4{margin:0;font-size:14px}
+.part p{margin:3px 0;font-size:12px}
+.specs{font-size:11px!important;color:#b9c9dd!important}
+.price{font-size:14px;font-weight:bold;white-space:nowrap}
+.total{padding:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;background:#0b1421;font-weight:bold}
+.total strong{font-size:22px;color:var(--green)}
+.remaining{padding:0 20px 16px;font-size:12px;color:var(--muted)}
+.warning{margin:0;padding:13px 20px;background:#292116;color:#ffdaa0;font-size:12px}
+.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:22px}
+.secondary{border:1px solid var(--border);background:var(--panel2);color:white;border-radius:10px;padding:13px 17px;font-weight:bold}
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.feature{padding:22px;border:1px solid var(--border);border-radius:14px;background:var(--panel)}
+.feature h3{margin-bottom:5px}
+.feature p{font-size:13px;margin-bottom:0}
+footer{text-align:center;padding:30px 6%;border-top:1px solid var(--border);font-size:12px}
+footer p{font-size:11px}
+@media(max-width:700px){
+ header{flex-direction:column}
+ nav{justify-content:center;gap:12px}
+ .hero{grid-template-columns:1fr;padding:45px 6%;gap:25px}
+ .hero-image{height:230px}
+ .section{padding:45px 5%}
+ .config-card{padding:18px}
+ .uses{grid-template-columns:1fr}
+ .use{align-items:center}
+ .summary{grid-template-columns:1fr}
+ .summary strong{font-size:20px}
+ .part{grid-template-columns:60px minmax(0,1fr);gap:10px;padding:12px}
+ .part img{width:60px;height:60px}
+ .price{grid-column:2}
+ .features{grid-template-columns:1fr}
+ .total{font-size:13px}
+ .total strong{font-size:18px}
+}
+@media print{
+ header,.hero,#configurador,.features,footer,.actions{display:none!important}
+ body{background:white;color:black}
+ #resultados{display:block!important;padding:10px}
+ .build,.summary div,.build-head,.total{background:white;color:black}
+ .part p,.summary small{color:#333}
+ .price,.total strong,.summary strong{color:black}
+}
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <a class="logo" href="#inicio"><span class="logo-icon">A</span> ArmaPC <span>MX</span></a>
-    <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#configurador">Configurar PC</a>
-      <a href="#resultados">Resultados</a>
-      <a href="#nosotros">Nosotros</a>
-    </nav>
-  </header>
+<header>
+  <a class="logo" href="#inicio">⚡ ArmaPC <span>MX</span></a>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#configurador">Configurar PC</a>
+    <a href="#resultados">Resultados</a>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-content">
-        <span class="eyebrow">TU DINERO, TU PRÓXIMA PC</span>
-        <h1>Arma la PC ideal<br>para <span>tu presupuesto.</span></h1>
-        <p>Encuentra componentes para jugar, estudiar, trabajar o crear contenido sin gastar más de lo que tienes.</p>
-        <a class="primary-button" href="#configurador">Encontrar mi PC <span>→</span></a>
-        <div class="hero-points">
-          <span>✓ Presupuesto personalizado</span>
-          <span>✓ Componentes desglosados</span>
+<main>
+<section class="hero" id="inicio">
+  <div>
+    <span class="eyebrow">TU DINERO, TU PRÓXIMA PC</span>
+    <h1>Encuentra tu PC ideal para <span>tu presupuesto.</span></h1>
+    <p>Selecciona cuánto quieres gastar y descubre una configuración para gaming, estudio, trabajo o creación de contenido.</p>
+    <a class="btn" href="#configurador">Encontrar componentes →</a>
+  </div>
+  <img class="hero-image" src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=85" alt="Computadora de escritorio">
+</section>
+
+<section class="section" id="configurador">
+  <div class="heading">
+    <span class="eyebrow">CONFIGURADOR DE COMPONENTES</span>
+    <h2>¿Cuánto dinero tienes?</h2>
+    <p>Escribe la cantidad o toca uno de los presupuestos. Después elige para qué usarás tu computadora.</p>
+  </div>
+
+  <form id="config-form" class="config-card">
+    <label for="presupuesto">Presupuesto máximo en pesos mexicanos</label>
+    <div class="money">
+      <span>$</span>
+      <input id="presupuesto" type="number" min="4000" max="100000" step="100" value="10000" required>
+      <small>MXN</small>
+    </div>
+
+    <div class="quick">
+      <button type="button" data-budget="6000">$6,000</button>
+      <button type="button" data-budget="8000">$8,000</button>
+      <button type="button" data-budget="10000">$10,000</button>
+      <button type="button" data-budget="12000">$12,000</button>
+      <button type="button" data-budget="15000">$15,000</button>
+      <button type="button" data-budget="20000">$20,000</button>
+    </div>
+
+    <fieldset>
+      <legend>¿Para qué quieres tu PC?</legend>
+      <div class="uses">
+        <label class="use"><input type="radio" name="uso" value="gaming" checked><span>🎮 <b>Gaming</b><small>Juegos y entretenimiento</small></span></label>
+        <label class="use"><input type="radio" name="uso" value="trabajo"><span>💻 <b>Trabajo y estudio</b><small>Escuela y oficina</small></span></label>
+        <label class="use"><input type="radio" name="uso" value="creacion"><span>🎬 <b>Creación</b><small>Edición y streaming</small></span></label>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="btn submit">Encontrar mi PC →</button>
+    <p class="notice">Los precios son estimaciones ilustrativas y no cotizaciones en tiempo real.</p>
+  </form>
+</section>
+
+<section class="section" id="resultados" hidden>
+  <div class="result-head">
+    <span class="eyebrow">TU PC PERSONALIZADA</span>
+    <h2>Estos son tus componentes</h2>
+    <p id="result-description">Configuración según tu presupuesto.</p>
+  </div>
+  <div id="result-content" aria-live="polite"></div>
+  <div class="actions">
+    <button type="button" class="secondary" id="back-button">← Cambiar presupuesto</button>
+    <button type="button" class="btn" id="pdf-button">Guardar como PDF ↓</button>
+  </div>
+</section>
+
+<section class="section">
+  <div class="heading">
+    <span class="eyebrow">ARMAPC MX</span>
+    <h2>Arma tu PC con más claridad</h2>
+  </div>
+  <div class="features">
+    <article class="feature"><h3>💰 Cuida tu dinero</h3><p>Consulta el costo estimado de cada componente y el total.</p></article>
+    <article class="feature"><h3>🧩 Conoce las piezas</h3><p>Revisa especificaciones básicas antes de comprar.</p></article>
+    <article class="feature"><h3>🚀 Elige tu objetivo</h3><p>Encuentra configuraciones orientadas a tu tipo de uso.</p></article>
+  </div>
+</section>
+</main>
+
+<footer>
+  <a class="logo" href="#inicio">ArmaPC <span>MX</span></a>
+  <p>© <span id="year"></span> ArmaPC MX. Los precios pueden variar según la tienda.</p>
+</footer>
+
+<script>
+"use strict";
+
+const $ = id => document.getElementById(id);
+const money = n => n.toLocaleString("es-MX", {
+  style:"currency", currency:"MXN", maximumFractionDigits:0
+});
+
+/* Imágenes ilustrativas por tipo de componente.
+   Las imágenes son referencias visuales y no garantizan el modelo exacto. */
+const images = {
+  cpu:"https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=240&q=75",
+  board:"https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=240&q=75",
+  ram:"https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=240&q=75",
+  ssd:"https://images.unsplash.com/photo-1597872200969-2b65d9a7f2d8?auto=format&fit=crop&w=240&q=75",
+  gpu:"https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=240&q=75",
+  psu:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=240&q=75",
+  case:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=240&q=75",
+  cooler:"https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=240&q=75"
+};
+
+/* Catálogo orientativo. Precios y modelos deben actualizarse
+   conforme a cotizaciones reales de tiendas mexicanas. */
+const catalog = {
+  gaming: [
+    {
+      name:"PC gamer económica",
+      min:4000,
+      parts:[
+        ["Procesador","AMD Ryzen 5 4600G",1600,"6 núcleos / 12 hilos; frecuencia base 3.7 GHz, hasta 4.2 GHz","cpu"],
+        ["Tarjeta madre","A520M AM4",900,"Socket AM4; verificar soporte de BIOS para el procesador","board"],
+        ["Memoria RAM","16 GB DDR4 (2 x 8 GB)",600,"Kit de doble canal; velocidad objetivo 3200 MT/s si es compatible","ram"],
+        ["Almacenamiento","SSD SATA 480 GB",450,"Almacenamiento de estado sólido","ssd"],
+        ["Gráficos","Gráficos integrados Radeon",0,"No requiere tarjeta gráfica dedicada; rendimiento limitado frente a una GPU dedicada","gpu"],
+        ["Fuente de poder","500 W básica de marca identificable",650,"Verificar protecciones eléctricas y reseñas; no se asume certificación","psu"],
+        ["Gabinete","Micro-ATX con ventilación",600,"Verificar espacio para placa madre y ventiladores","case"]
+      ]
+    },
+    {
+      name:"PC gamer con tarjeta gráfica",
+      min:7000,
+      parts:[
+        ["Procesador","AMD Ryzen 5 5500",1400,"6 núcleos / 12 hilos; base 3.6 GHz, hasta 4.2 GHz; requiere GPU dedicada","cpu"],
+        ["Tarjeta madre","A520M AM4",900,"Socket AM4; confirmar BIOS y compatibilidad","board"],
+        ["Memoria RAM","16 GB DDR4 (2 x 8 GB)",600,"Doble canal; 3200 MT/s si lo admiten los módulos y la placa","ram"],
+        ["Almacenamiento","SSD NVMe 1 TB",700,"Verificar formato M.2 y compatibilidad de la placa","ssd"],
+        ["Tarjeta gráfica","Radeon RX 6600 8 GB",3200,"8 GB de VRAM; verificar dimensiones y conectores de alimentación","gpu"],
+        ["Fuente de poder","600 W de calidad",800,"Elegir modelo con protecciones; verificar requisitos de la gráfica","psu"],
+        ["Gabinete","Micro-ATX ventilado",600,"Confirmar largo máximo de tarjeta gráfica","case"]
+      ]
+    },
+    {
+      name:"PC gamer equilibrada",
+      min:9000,
+      parts:[
+        ["Procesador","AMD Ryzen 5 5600",1900,"6 núcleos / 12 hilos; base 3.5 GHz, hasta 4.4 GHz; requiere GPU dedicada","cpu"],
+        ["Tarjeta madre","B550M AM4",1300,"Socket AM4; verificar BIOS, memoria y ranuras disponibles","board"],
+        ["Memoria RAM","16 GB DDR4 (2 x 8 GB)",600,"Doble canal; 3200 MT/s como referencia","ram"],
+        ["Almacenamiento","SSD NVMe 1 TB",700,"Formato M.2; confirmar interfaz soportada","ssd"],
+        ["Tarjeta gráfica","Radeon RX 6600 8 GB",3200,"8 GB de VRAM; verificar fuente y espacio del gabinete","gpu"],
+        ["Fuente de poder","650 W de modelo confiable",1000,"Buscar protecciones y pruebas independientes; certificación no garantiza calidad por sí sola","psu"],
+        ["Gabinete","Micro-ATX con flujo de aire",700,"Espacio para tarjeta gráfica y ventiladores","case"]
+      ]
+    },
+    {
+      name:"PC gamer mejorada",
+      min:12000,
+      parts:[
+        ["Procesador","AMD Ryzen 5 5600",1900,"6 núcleos / 12 hilos; base 3.5 GHz, hasta 4.4 GHz","cpu"],
+        ["Tarjeta madre","B550M AM4",1400,"Socket AM4; verificar compatibilidad de BIOS","board"],
+        ["Memoria RAM","32 GB DDR4 (2 x 16 GB)",1100,"Doble canal; velocidad según compatibilidad","ram"],
+        ["Almacenamiento","SSD NVMe 1 TB",700,"M.2; comprobar interfaz soportada","ssd"],
+        ["Tarjeta gráfica","Radeon RX 7600 8 GB",4800,"8 GB de VRAM; verificar tamaño y alimentación","gpu"],
+        ["Fuente de poder","650 W de buena calidad",1100,"Revisar modelo exacto, protecciones y conectores","psu"],
+        ["Gabinete","Micro-ATX con buena ventilación",800,"Verificar dimensiones de todos los componentes","case"]
+      ]
+    }
+  ],
+  trabajo: [
+    {
+      name:"PC económica para estudio",
+      min:4000,
+      parts:[
+        ["Procesador","AMD Ryzen 5 4600G",1600,"6 núcleos / 12 hilos; base 3.7 GHz, hasta 4.2 GHz; gráficos integrados","cpu"],
+        ["Tarjeta madre","A520M AM4",900,"Socket AM4; comprobar BIOS","board"],
+        ["Memoria RAM","16 GB DDR4 (2 x 8 GB)",600,"Doble canal; objetivo de 3200 MT/s según compatibilidad","ram"],
+        ["Almacenamiento","SSD SATA 480 GB",450,"Unidad de estado sólido","ssd"],
+        ["Gráficos","Radeon integrados",0,"Incluidos en el procesador","gpu"],
+        ["Fuente de poder","500 W de marca identificable",650,"Verificar protecciones y reseñas; certificación no confirmada","psu"],
+        ["Gabinete","Micro-ATX",600,"Verificar ventilación y medidas","case"]
+      ]
+    },
+    {
+      name:"PC para trabajo multitarea",
+      min:7000,
+      parts:[
+        ["Procesador","AMD Ryzen 5 5600G",2200,"6 núcleos / 12 hilos; base 3.9 GHz, hasta 4.4 GHz; gráficos integrados","cpu"],
+        ["Tarjeta madre","A520M AM4",1000,"Verificar BIOS, socket y memoria compatible","board"],
+        ["Memoria RAM","32 GB DDR4 (2 x 16 GB)",1100,"Doble canal; frecuencia según soporte","ram"],
+        ["Almacenamiento","SSD NVMe 1 TB",800,"M.2; verificar compatibilidad de la placa","ssd"],
+        ["Gráficos","Radeon integrados",0,"Incluidos en el procesador","gpu"],
+        ["Fuente de poder","550 W de modelo confiable",750,"Comprobar protecciones y garantía","psu"],
+        ["Gabinete","Micro-ATX ventilado",700,"Verificar espacio y flujo de aire","case"]
+      ]
+    }
+  ],
+  creacion: [
+    {
+      name:"PC para creación de contenido",
+      min:9000,
+      parts:[
+        ["Procesador","AMD Ryzen 5 5600",1900,"6 núcleos / 12 hilos; base 3.5 GHz, hasta 4.4 GHz; requiere GPU dedicada","cpu"],
+        ["Tarjeta madre","B550M AM4",1300,"Socket AM4; verificar BIOS y conectividad","board"],
+        ["Memoria RAM","32 GB DDR4 (2 x 16 GB)",1100,"Doble canal; frecuencia según compatibilidad","ram"],
+        ["Almacenamiento","SSD NVMe 1 TB",700,"M.2; comprobar interfaz","ssd"],
+        ["Tarjeta gráfica","Radeon RX 6600 8 GB",3200,"8 GB de VRAM; comprobar compatibilidad con software de edición","gpu"],
+        ["Fuente de poder","650 W de modelo confiable",1000,"Revisar conectores, protecciones y requisitos de la GPU","psu"],
+        ["Gabinete","Micro-ATX ventilado",700,"Confirmar espacio para tarjeta gráfica","case"]
+      ]
+    },
+    {
+      name:"PC para edición y streaming",
+      min:12000,
+      parts:[
+        ["Procesador","AMD Ryzen 7 5700X",2700,"8 núcleos / 16 hilos; base 3.4 GHz, hasta 4.6 GHz; requiere GPU dedicada","cpu"],
+        ["Tarjeta madre","B550M AM4",1400,"Socket AM4; verificar BIOS y memoria","board"],
+        ["Memoria RAM","32 GB DDR4 (2 x 16 GB)",1100,"Doble canal; velocidad según compatibilidad","ram"],
+        ["Almacenamiento","SSD NVMe 1 TB",700,"M.2; comprobar interfaz soportada","ssd"],
+        ["Tarjeta gráfica","Radeon RX 7600 8 GB",4800,"8 GB de VRAM; verificar soporte de las aplicaciones usadas","gpu"],
+        ["Fuente de poder","650 W de buena calidad",1100,"Verificar protecciones y conectores","psu"],
+        ["Gabinete","Micro-ATX ventilado",800,"Confirmar espacio y flujo de aire","case"],
+        ["Disipador","Disipador compatible AM4",500,"El Ryzen 7 5700X normalmente necesita disipador comprado aparte","cooler"]
+      ]
+    }
+  ]
+};
+
+function totalPC(pc){
+  return pc.parts.reduce((sum,part)=>sum+part[2],0);
+}
+
+function obtenerUso(){
+  return document.querySelector('input[name="uso"]:checked')?.value || "gaming";
+}
+
+function actualizarBotones(){
+  document.querySelectorAll("[data-budget]").forEach(button=>{
+    button.classList.toggle("active",Number(button.dataset.budget)===Number($("presupuesto").value));
+  });
+}
+
+document.querySelectorAll("[data-budget]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    $("presupuesto").value=button.dataset.budget;
+    actualizarBotones();
+  });
+});
+$("presupuesto").addEventListener("input",actualizarBotones);
+
+function renderPC(pc,budget,uso){
+  const total=totalPC(pc);
+  const remaining=budget-total;
+
+  const partsHTML=pc.parts.map(part=>{
+    const [category,name,price,specs,imageKey]=part;
+    const image=images[imageKey];
+    return `
+      <article class="part">
+        <img src="${image}" alt="Imagen ilustrativa de ${category}" loading="lazy"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=240&q=60'">
+        <div>
+          <h4>${category}: ${name}</h4>
+          <p class="specs">${specs}</p>
         </div>
+        <div class="price">${money(price)}</div>
+      </article>`;
+  }).join("");
+
+  const remainingHTML = (remaining > 0
+    ? `<p class="remaining">Te quedarían aproximadamente ${money(remaining)} de tu presupuesto.</p>`
+    : remaining === 0
+      ? `<p class="remaining">Usarías exactamente el presupuesto indicado.</p>`
+      : `<p class="remaining">Esta configuración supera tu presupuesto por ${money(Math.abs(remaining))}.</p>`)
+    + (remaining < 0
+      ? `<p class="warning">Atención: el total estimado supera el presupuesto indicado. Revisa los componentes o aumenta el presupuesto.</p>`
+      : "");
+
+  $("result-content").innerHTML = `
+    <div class="summary">
+      <div><small>Presupuesto</small><strong>${money(budget)}</strong></div>
+      <div><small>Total estimado</small><strong>${money(total)}</strong></div>
+      <div><small>Uso seleccionado</small><strong>${uso === "gaming" ? "Gaming" : uso === "trabajo" ? "Estudio y trabajo" : "Creación"}</strong></div>
+    </div>
+    <article class="build">
+      <div class="build-head">
+        <span class="eyebrow">CONFIGURACIÓN SUGERIDA</span>
+        <h3>${pc.name}</h3>
+        <p>Componentes orientativos; verifica compatibilidad y precios antes de comprar.</p>
       </div>
-      <div class="hero-visual">
-        <img
-          src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=85"
-          alt="Computadora de escritorio para gaming"
-          onerror="this.style.display='none'"
-        >
-        <div class="floating-label"><span class="status-dot"></span> Encuentra tu próxima PC</div>
-      </div>
-    </section>
+      ${partsHTML}
+      <div class="total"><span>Total aproximado</span><strong>${money(total)}</strong></div>
+      ${remainingHTML}
+    </article>`;
+}
 
-    <section class="config-section section" id="configurador">
-      <div class="section-heading">
-        <span class="eyebrow">CONFIGURADOR INTELIGENTE</span>
-        <h2>¿Cuánto quieres invertir?</h2>
-        <p>Escribe una cantidad o elige uno de los presupuestos rápidos.</p>
-      </div>
+function elegirConfiguracion(uso, budget) {
+  const opciones = catalog[uso] || catalog.gaming;
+  const compatibles = opciones
+    .map(pc => ({ pc, total: totalPC(pc) }))
+    .filter(item => item.total <= budget)
+    .sort((a, b) => b.total - a.total);
 
-      <form id="config-form">
-        <div class="config-card">
-          <label for="presupuesto">Tu presupuesto máximo (MXN)</label>
-          <div class="money-input">
-            <span>$</span>
-            <input
-              type="number"
-              id="presupuesto"
-              name="presupuesto"
-              min="4000"
-              max="100000"
-              step="100"
-              value="10000"
-              placeholder="Ej. 10000"
-              required
-            >
-            <span class="currency">MXN</span>
-          </div>
+  if (compatibles.length) {
+    return { pc: compatibles[0].pc, dentro: true };
+  }
 
-          <div class="budget-buttons">
-            <button type="button" data-budget="6000">$6,000</button>
-            <button type="button" data-budget="8000">$8,000</button>
-            <button type="button" data-budget="10000">$10,000</button>
-            <button type="button" data-budget="12000">$12,000</button>
-            <button type="button" data-budget="15000">$15,000</button>
-            <button type="button" data-budget="20000">$20,000</button>
-          </div>
+  const masEconomica = opciones
+    .map(pc => ({ pc, total: totalPC(pc) }))
+    .sort((a, b) => a.total - b.total)[0];
 
-          <fieldset class="usage-field">
-            <legend>¿Para qué usarás tu PC?</legend>
-            <div class="usage-options">
-              <label class="usage-option">
-                <input type="radio" name="uso" value="gaming" checked>
-                <span class="usage-emoji">🎮</span>
-                <span><strong>Gaming</strong><small>Juegos y entretenimiento</small></span>
-              </label>
-              <label class="usage-option">
-                <input type="radio" name="uso" value="trabajo">
-                <span class="usage-emoji">💻</span>
-                <span><strong>Trabajo y estudio</strong><small>Escuela y oficina</small></span>
-              </label>
-              <label class="usage-option">
-                <input type="radio" name="uso" value="creacion">
-                <span class="usage-emoji">🎬</span>
-                <span><strong>Creación</strong><small>Edición y streaming</small></span>
-              </label>
-            </div>
-          </fieldset>
+  return { pc: masEconomica.pc, dentro: false };
+}
 
-          <button class="primary-button submit-button" type="submit">
-            Encontrar mi PC <span>→</span>
-          </button>
-          <p class="form-note">El sistema buscará una configuración registrada que no supere tu presupuesto.</p>
-        </div>
-      </form>
-    </section>
+$("config-form").addEventListener("submit", event => {
+  event.preventDefault();
 
-    <section class="results-section section" id="resultados" hidden>
-      <div class="section-heading results-heading">
-        <span class="eyebrow">TU CONFIGURACIÓN</span>
-        <h2>Esta PC se ajusta a tu presupuesto</h2>
-        <p id="resultado-descripcion">Aquí aparecerán los componentes seleccionados.</p>
-      </div>
+  const budget = Number($("presupuesto").value);
+  const uso = obtenerUso();
 
-      <div id="component-list" aria-live="polite"></div>
+  if (!Number.isFinite(budget) || budget < 4000 || budget > 100000) {
+    alert("Escribe un presupuesto entre $4,000 y $100,000 MXN.");
+    $("presupuesto").focus();
+    return;
+  }
 
-      <div class="results-actions">
-        <button type="button" class="secondary-button" id="volver-configurar">← Cambiar presupuesto</button>
-        <button type="button" class="primary-button" id="imprimir-resultados">Guardar o imprimir PDF ↓</button>
-      </div>
-    </section>
+  const seleccion = elegirConfiguracion(uso, budget);
+  renderPC(seleccion.pc, budget, uso);
 
-    <section class="benefits-section section">
-      <div class="section-heading">
-        <span class="eyebrow">¿POR QUÉ ARMAPC MX?</span>
-        <h2>Compra con una idea más clara</h2>
-      </div>
-      <div class="benefit-grid">
-        <article class="benefit-card">
-          <span>💰</span>
-          <h3>Controla tus gastos</h3>
-          <p>Consulta el costo estimado de cada pieza y el total de tu configuración.</p>
-        </article>
-        <article class="benefit-card">
-          <span>🧩</span>
-          <h3>Todo en una lista</h3>
-          <p>Revisa procesador, tarjeta madre, memoria, almacenamiento y demás componentes.</p>
-        </article>
-        <article class="benefit-card">
-          <span>🚀</span>
-          <h3>Elige según tu uso</h3>
-          <p>Compara opciones orientadas a juegos, trabajo o creación de contenido.</p>
-        </article>
-      </div>
-    </section>
+  const resultados = $("resultados");
+  resultados.hidden = false;
 
-    <section class="about-section section" id="nosotros">
-      <div>
-        <span class="eyebrow">SOBRE ARMAPC MX</span>
-        <h2>Tu próxima computadora empieza aquí.</h2>
-      </div>
-      <p>ArmaPC MX te ayuda a explorar configuraciones orientativas según tu presupuesto. Antes de comprar, verifica los precios actuales, la disponibilidad y la compatibilidad de cada componente.</p>
-    </section>
-  </main>
+  if (!seleccion.dentro) {
+    $("result-description").textContent =
+      "No hay una configuración del catálogo dentro de ese presupuesto. Mostramos la opción más económica como referencia.";
+  } else {
+    $("result-description").textContent =
+      "Elegimos la configuración disponible más cercana a tu presupuesto para el uso seleccionado.";
+  }
 
-  <footer class="footer">
-    <a class="logo" href="#inicio"><span class="logo-icon">A</span> ArmaPC <span>MX</span></a>
-    <p>© <span id="year"></span> ArmaPC MX · Configura con inteligencia.</p>
-    <p class="footer-note">Los precios mostrados son estimaciones de ejemplo, no cotizaciones en tiempo real.</p>
-  </footer>
+  resultados.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+$("back-button").addEventListener("click", () => {
+  $("configurador").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+$("pdf-button").addEventListener("click", () => {
+  window.print();
+});
+
+$("year").textContent = new Date().getFullYear();
+actualizarBotones();
+
+</script>
 </body>
 </html>
