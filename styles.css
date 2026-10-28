@@ -1,0 +1,262 @@
+/* === ESTILOS GENERALES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #f1f5f9;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* === ENCABEZADO === */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(90deg, #1e40af, #3b82f6);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* === SECCIÓN PRESUPUESTO === */
+.presupuesto-seccion {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #1e293b;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.presupuesto-seccion h2 {
+    color: #60a5fa;
+    margin-bottom: 10px;
+}
+
+.presupuesto-seccion p {
+    color: #94a3b8;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 30px;
+}
+
+.simbolo {
+    background: #2563eb;
+    padding: 14px 18px;
+    border-radius: 8px 0 0 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.input-group input {
+    padding: 14px;
+    font-size: 1.2rem;
+    width: 200px;
+    border: none;
+    outline: none;
+    background: #334155;
+    color: white;
+}
+
+.moneda {
+    background: #475569;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    font-weight: 500;
+}
+
+/* === BOTONES DE TIPO === */
+.botones-tipo {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.btn-tipo {
+    padding: 12px 24px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background: #334155;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-tipo.activo {
+    background: #2563eb;
+    border-color: #3b82f6;
+    transform: scale(1.05);
+}
+
+.btn-tipo:hover {
+    border-color: #60a5fa;
+}
+
+/* === BOTONES PRINCIPALES === */
+.btn-principal {
+    padding: 14px 40px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #16a34a, #22c55e);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4);
+}
+
+.btn-secundario {
+    margin-top: 30px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #475569;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-secundario:hover {
+    background: #64748b;
+}
+
+/* === RESULTADOS === */
+.resultados {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    padding: 20px;
+}
+
+.resultados h2 {
+    text-align: center;
+    color: #60a5fa;
+    margin-bottom: 10px;
+}
+
+.resumen-presupuesto {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 40px;
+}
+
+/* === TARJETAS DE COMPONENTES === */
+.componentes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.componente-tarjeta {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.componente-tarjeta:hover {
+    transform: translateY(-5px);
+}
+
+.componente-tarjeta h3 {
+    color: #cbd5e1;
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.componente-tarjeta img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.componente-tarjeta h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.componente-tarjeta p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 12px;
+}
+
+.precio {
+    display: inline-block;
+    background: #16a34a;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* === TOTAL FINAL === */
+.total-final {
+    text-align: center;
+    margin-top: 40px;
+    padding: 25px;
+    background: #1e293b;
+    border-radius: 12px;
+    border: 2px solid #22c55e;
+}
+
+.total-final h3 {
+    font-size: 1.5rem;
+    color: #22c55e;
+}
+
+.nota {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 8px;
+}
+
+/* === PIE DE PÁGINA === */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #0f172a;
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-top: 60px;
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 600px) {
+    .hero h1 { font-size: 1.8rem; }
+    .botones-tipo { flex-direction: column; }
+    .input-group input { width: 150px; }
+}
