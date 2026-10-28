@@ -1,11 +1,111 @@
 <!DOCTYPE html>
- <html>
- <head>
-     <title>ArmaPC MX</title>
-     <link rel="stylesheet" href="styles.css">
- </head>
- <body>
-     <h1>¡Bienvenido a ArmaPC MX!</h1>
-     <p>Estamos construyendo algo increíble aquí 🚀</p>
- </body>
- </html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArmaPC MX — ¡Tu PC ideal, a tu precio!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-contenido">
+            <h1>🖥️ ArmaPC MX</h1>
+            <p class="subtitulo">Descubre qué PC puedes armar con tu presupuesto. ¡Calidad y precio, de la mano!</p>
+        </div>
+    </header>
+
+    <section class="presupuesto-seccion">
+        <h2>¿Cuánto quieres invertir?</h2>
+        <p>Ingresa tu presupuesto y te mostramos las mejores opciones</p>
+        
+        <div class="input-group">
+            <span class="simbolo">$</span>
+            <input type="number" id="presupuesto" placeholder="Ejemplo: 8000" min="1000">
+            <span class="moneda">MXN</span>
+        </div>
+
+        <div class="botones-tipo">
+            <button class="btn-tipo activo" id="btn-jugar">🎮 Para Jugar</button>
+            <button class="btn-tipo" id="btn-trabajar">💼 Para Trabajar</button>
+        </div>
+
+        <button class="btn-principal" onclick="mostrarRecomendaciones()">🔍 Ver recomendaciones</button>
+    </section>
+
+    <section class="resultados" id="resultados" style="display: none;">
+        <h2>✅ Tu PC recomendada</h2>
+        <p class="resumen-presupuesto">Presupuesto: <span id="cantidad-presupuesto"></span> MXN</p>
+
+        <div class="componentes-grid">
+            <div class="componente-tarjeta">
+                <h3>🧠 Procesador</h3>
+                <img src="https://via.placeholder.com/200x120/2563eb/ffffff?text=Procesador" alt="Procesador">
+                <h4 id="nombre-cpu">—</h4>
+                <p id="descripcion-cpu">—</p>
+                <span class="precio" id="precio-cpu">$ —</span>
+            </div>
+
+            <div class="componente-tarjeta">
+                <h3>🔌 Placa Madre</h3>
+                <img src="https://via.placeholder.com/200x120/16a34a/ffffff?text=Placa+Madre" alt="Placa Madre">
+                <h4 id="nombre-mb">—</h4>
+                <p id="descripcion-mb">—</p>
+                <span class="precio" id="precio-mb">$ —</span>
+            </div>
+
+            <div class="componente-tarjeta">
+                <h3>📊 Memoria RAM</h3>
+                <img src="https://via.placeholder.com/200x120/ca8a04/ffffff?text=RAM" alt="Memoria RAM">
+                <h4 id="nombre-ram">—</h4>
+                <p id="descripcion-ram">—</p>
+                <span class="precio" id="precio-ram">$ —</span>
+            </div>
+
+            <div class="componente-tarjeta">
+                <h3>🎮 Tarjeta Gráfica</h3>
+                <img src="https://via.placeholder.com/200x120/dc2626/ffffff?text=Gráfica" alt="Tarjeta Gráfica">
+                <h4 id="nombre-gpu">—</h4>
+                <p id="descripcion-gpu">—</p>
+                <span class="precio" id="precio-gpu">$ —</span>
+            </div>
+
+            <div class="componente-tarjeta">
+                <h3>💾 Almacenamiento</h3>
+                <img src="https://via.placeholder.com/200x120/9333ea/ffffff?text=SSD" alt="Almacenamiento">
+                <h4 id="nombre-ssd">—</h4>
+                <p id="descripcion-ssd">—</p>
+                <span class="precio" id="precio-ssd">$ —</span>
+            </div>
+
+            <div class="componente-tarjeta">
+                <h3>📦 Gabinete</h3>
+                <img src="https://via.placeholder.com/200x120/0891b2/ffffff?text=Gabinete" alt="Gabinete">
+                <h4 id="nombre-case">—</h4>
+                <p id="descripcion-case">—</p>
+                <span class="precio" id="precio-case">$ —</span>
+            </div>
+
+            <div class="componente-tarjeta">
+                <h3>⚡ Fuente de Poder</h3>
+                <img src="https://via.placeholder.com/200x120/e11d48/ffffff?text=Fuente" alt="Fuente de Poder">
+                <h4 id="nombre-psu">—</h4>
+                <p id="descripcion-psu">—</p>
+                <span class="precio" id="precio-psu">$ —</span>
+            </div>
+        </div>
+
+        <div class="total-final">
+            <h3>💰 Total estimado: <span id="total">$ —</span></h3>
+            <p class="nota">* Los precios pueden variar según tienda y disponibilidad</p>
+        </div>
+
+        <button class="btn-secundario" onclick="reiniciar()">🔄 Calcular otro presupuesto</button>
+    </section>
+
+    <footer>
+        <p>© 2026 ArmaPC MX — Tu PC ideal, al mejor precio 🇲🇽</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
