@@ -108,6 +108,23 @@ footer p{font-size:11px}
  .part p,.summary small{color:#333}
  .price,.total strong,.summary strong{color:black}
 }
+
+/* Catálogo histórico y galería de componentes */
+.catalog-tools{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;max-width:1000px;margin:0 auto 22px}
+.catalog-tools input,.catalog-tools select{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;background:#0b1321;color:var(--text);font:inherit}
+.catalog-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:1200px;margin:auto}
+.catalog-item{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--panel);min-width:0}
+.catalog-item img{display:block;width:100%;height:150px;object-fit:contain;padding:10px;background:#0b1321}
+.catalog-item .catalog-info{padding:12px}
+.catalog-item h3{font-size:14px;line-height:1.35;margin:0 0 7px}
+.catalog-item p{font-size:11px;line-height:1.45;margin:4px 0}
+.catalog-tag{display:inline-block;font-size:10px;font-weight:bold;color:var(--cyan);border:1px solid var(--border);border-radius:30px;padding:3px 7px;margin:0 4px 5px 0}
+.catalog-empty{text-align:center;grid-column:1/-1;padding:25px;border:1px dashed var(--border);border-radius:12px;color:var(--muted)}
+.catalog-note{max-width:950px;margin:0 auto 20px;font-size:12px;text-align:center}
+@media(max-width:900px){.catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.catalog-tools{grid-template-columns:1fr}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.catalog-item img{height:120px}}
+@media(max-width:380px){.catalog-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -126,7 +143,7 @@ footer p{font-size:11px}
   <div>
     <span class="eyebrow">TU DINERO, TU PRÓXIMA PC</span>
     <h1>Encuentra tu PC ideal para <span>tu presupuesto.</span></h1>
-    <p>Selecciona cuánto quieres gastar y descubre una configuración para gaming, estudio, trabajo o creación de contenido.</p>
+    <p>Selecciona tu presupuesto y explora componentes desde generaciones antiguas hasta modelos actuales, con un catálogo histórico filtrable.</p>
     <a class="btn" href="#configurador">Encontrar componentes →</a>
   </div>
   <img class="hero-image" src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=85" alt="Computadora de escritorio">
@@ -160,12 +177,14 @@ footer p{font-size:11px}
       <legend>¿Qué plataforma quieres?</legend>
       <label class="ram-choice" for="plataforma-select">Procesador y compatibilidad</label>
       <select id="plataforma-select" name="plataforma" class="ram-select">
-        <option value="amd" selected>AMD AM4 moderno — DDR4</option>
+        <option value="amd" selected>AMD AM4 — DDR4</option>
+        <option value="amd5">AMD Ryzen AM5 — DDR5</option>
         <option value="amd-ddr3">AMD antiguo — Athlon / Phenom / FX — DDR3</option>
-        <option value="intel">Intel moderno — DDR4</option>
+        <option value="intel">Intel LGA1700 — DDR4</option>
+        <option value="intel5">Intel moderno — DDR5</option>
         <option value="intel-ddr3">Intel antiguo — DDR3 (económico)</option>
       </select>
-      <p class="notice">Importante: DDR3 solo funciona con placas madre compatibles de generaciones antiguas. Athlon II y Phenom II suelen usar AM3; FX suele usar AM3+. No se puede instalar DDR3 en una placa DDR4 o DDR5.</p>
+      <p class="notice">Importante: DDR3, DDR4 y DDR5 no son intercambiables. Elige la plataforma correcta: AM3/AM3+ para varios AMD antiguos; AM4 para DDR4; AM5 para DDR5; y verifica la variante exacta de placa Intel, porque algunos sockets tienen placas DDR4 y otras DDR5.</p>
     </fieldset>
 
     <fieldset class="ram-options">
@@ -207,6 +226,19 @@ footer p{font-size:11px}
       <p class="notice">Referencias: XPG STARKER AIR BTF en DD Tech y XPG Valor Air Nano en Mercado Libre. Confirma stock, envío y precio final antes de comprar.</p>
     </fieldset>
 
+    <fieldset class="ram-options">
+      <legend>¿Qué ventiladores quieres?</legend>
+      <label class="ram-choice" for="fan-select">Tamaño y tipo</label>
+      <select id="fan-select" name="ventiladores" class="ram-select">
+        <option value="standard">Ventilador normal de 80 mm — $120 MXN (estimado)</option>
+        <option value="92mm">Ventilador de 92 mm — $140 MXN (estimado)</option>
+        <option value="120mm" selected>Ventilador de 120 mm — $150 MXN (estimado)</option>
+        <option value="140mm">Ventilador de 140 mm — $190 MXN (estimado)</option>
+        <option value="kit120">Kit de 3 ventiladores de 120 mm — $399 MXN (estimado)</option>
+      </select>
+      <p class="notice">La foto depende del tamaño elegido. Comprueba los espacios disponibles del gabinete, el conector y si incluye iluminación ARGB.</p>
+    </fieldset>
+
     <fieldset>
       <legend>¿Para qué quieres tu PC?</legend>
       <div class="uses">
@@ -232,6 +264,27 @@ footer p{font-size:11px}
     <button type="button" class="secondary" id="back-button">← Cambiar presupuesto</button>
     <button type="button" class="btn" id="pdf-button">Guardar como PDF ↓</button>
   </div>
+</section>
+
+<section class="section" id="catalogo-historico">
+  <div class="heading">
+    <span class="eyebrow">CATÁLOGO HISTÓRICO 2000–2026</span>
+    <h2>Busca procesadores, gráficas y ventiladores</h2>
+    <p>Modelos representativos por año y generación, con imágenes de referencia, nombre y fabricante. Filtra por tipo, marca o año.</p>
+  </div>
+  <p class="catalog-note">Las fotos se intentan obtener de artículos de Wikipedia mediante su API pública. Si un modelo no tiene una imagen disponible, se muestra una tarjeta de respaldo con su nombre. Este catálogo representa generaciones y modelos principales; no es una lista de cada variante OEM o portátil.</p>
+  <div class="catalog-tools">
+    <input id="catalog-search" type="search" placeholder="Buscar modelo, por ejemplo GTX 1080 o Ryzen 5…" aria-label="Buscar componente">
+    <select id="catalog-type" aria-label="Tipo de componente"><option value="all">Todos los componentes</option><option value="gpu">Tarjetas gráficas</option><option value="cpu">Procesadores</option><option value="fan">Ventiladores</option><option value="ram">Memoria RAM</option></select>
+    <select id="catalog-brand" aria-label="Marca"><option value="all">Todas las marcas</option><option value="NVIDIA">NVIDIA</option><option value="ATI/AMD">ATI / AMD</option><option value="Intel">Intel</option><option value="AMD">AMD (procesadores)</option><option value="Varios">Varios</option></select>
+  </div>
+  <div class="catalog-tools" style="grid-template-columns:1fr 1fr 1fr">
+    <select id="catalog-year" aria-label="Año"><option value="all">Todos los años</option><option value="2000-2005">2000–2005</option><option value="2006-2010">2006–2010</option><option value="2011-2015">2011–2015</option><option value="2016-2020">2016–2020</option><option value="2021-2026">2021–2026</option></select>
+    <select id="catalog-sort" aria-label="Ordenar"><option value="year-asc">Año: antiguo a reciente</option><option value="year-desc">Año: reciente a antiguo</option><option value="name">Nombre A–Z</option></select>
+    <button type="button" class="secondary" id="catalog-reset">Limpiar filtros</button>
+  </div>
+  <p id="catalog-count" class="catalog-note" aria-live="polite"></p>
+  <div id="catalog-grid" class="catalog-grid"></div>
 </section>
 
 <section class="section" id="fuentes-precios">
@@ -292,7 +345,14 @@ const images = {
   ddr3:"https://i.ebayimg.com/images/g/Ml0AAOSwebZnOCOV/s-l1200.jpg",
   hdd:"https://media.ldlc.com/r1600/ld/products/00/05/80/48/LD0005804861.jpg",
   wifi:"https://m.media-amazon.com/images/I/61zJb7oXWYL._AC_SL1200_.jpg",
-  fan:"https://media.ldlc.com/r1600/ld/products/00/06/02/38/LD0006023898.jpg"
+  fan:"https://media.ldlc.com/r1600/ld/products/00/06/02/38/LD0006023898.jpg",
+  fan120:"https://media.ldlc.com/r1600/ld/products/00/06/02/38/LD0006023898.jpg",
+  fan80:"https://m.media-amazon.com/images/I/61q4XhJcMJL._AC_SL1200_.jpg",
+  fan140:"https://media.ldlc.com/r1600/ld/products/00/06/02/38/LD0006023898.jpg",
+  ddr4:"https://i.ebayimg.com/images/g/Ml0AAOSwebZnOCOV/s-l1200.jpg",
+  ddr5:"https://m.media-amazon.com/images/I/61YUF4q4GEL._AC_SL1500_.jpg",
+  cpuIntelOld:"https://upload.wikimedia.org/wikipedia/commons/8/8e/Intel_Pentium_4_2.4GHz.jpg",
+  cpuIntelModern:"https://www.intel.com/content/dam/www/central-libraries/us/en/images/2023-08/core-i5-processor-badge.png"
 };
 
 /* Catálogo orientativo. Precios y modelos deben actualizarse
@@ -546,12 +606,48 @@ const amdLegacyCatalog = {
   ]}]
 };
 
+// Catálogos DDR5: CPU, placa y RAM se mantienen en una misma plataforma.
+const ddr5Catalog = {
+  amd5: {
+    gaming:[{name:"PC AMD Ryzen AM5 con DDR5",parts:[
+      ["Procesador","AMD Ryzen 5 7600",3299,"6 núcleos / 12 hilos; socket AM5; gráficos integrados básicos","cpu5700x"],
+      ["Tarjeta madre","B650M AM5 DDR5",2499,"Socket AM5; compatible con DDR5; verifica BIOS y conectividad","board"],
+      ["Memoria RAM","32 GB DDR5 (2 × 16 GB)",2899,"Kit DDR5; velocidad según soporte de placa y CPU","ddr5"],
+      ["Almacenamiento","SSD NVMe 1 TB",1099,"M.2 NVMe; verificar interfaz","ssd"],
+      ["Gráficos","Radeon Graphics integrados",0,"Gráficos integrados básicos; una GPU dedicada mejora juegos","gpu"],
+      ["Fuente de poder","Fuente 650 W de marca identificable",999,"Confirmar conectores y protecciones","psu"],
+      ["Gabinete","Gabinete Micro-ATX ventilado",899,"Verificar soporte para placa y GPU","case"],
+      ["Ventiladores extra","Ventilador de 120 mm",150,"Precio estimado; comprobar montaje","fan"]
+    ]}],
+    trabajo:[{name:"PC AMD AM5 DDR5 para estudio",parts:[
+      ["Procesador","AMD Ryzen 5 7600",3299,"Socket AM5; 6 núcleos / 12 hilos","cpu5700x"],["Tarjeta madre","B650M AM5 DDR5",2499,"Compatible con DDR5","board"],["Memoria RAM","16 GB DDR5 (2 × 8 GB)",1799,"Kit DDR5; precio estimado","ddr5"],["Almacenamiento","SSD NVMe 1 TB",1099,"M.2 NVMe","ssd"],["Gráficos","Radeon Graphics integrados",0,"Adecuados para tareas y vídeo","gpu"],["Fuente de poder","Fuente 500 W de marca identificable",699,"Verificar protecciones","psu"],["Gabinete","Gabinete Micro-ATX ventilado",899,"Verificar formato","case"]
+    ]}],
+    creacion:[{name:"PC AMD AM5 DDR5 para creación",parts:[
+      ["Procesador","AMD Ryzen 7 7700",4299,"8 núcleos / 16 hilos; socket AM5","cpu5700x"],["Tarjeta madre","B650M AM5 DDR5",2499,"Compatible con AM5 y DDR5","board"],["Memoria RAM","32 GB DDR5 (2 × 16 GB)",2899,"Kit DDR5","ddr5"],["Almacenamiento","SSD NVMe 1 TB",1099,"M.2 NVMe","ssd"],["Tarjeta gráfica","AMD Radeon RX 7600 8 GB",6499,"Precio orientativo; verifica fuente y dimensiones","rx6600"],["Fuente de poder","Fuente 650 W de marca identificable",999,"Verificar conectores","psu"],["Gabinete","Gabinete Micro-ATX ventilado",899,"Verificar formato","case"]
+    ]}]
+  },
+  intel5: {
+    gaming:[{name:"PC Intel DDR5 de entrada",parts:[
+      ["Procesador","Intel Core i5-14400",4299,"10 núcleos híbridos; verificar versión y socket LGA1700","intelcpu"],["Tarjeta madre","B760M DDR5 LGA1700",2299,"Elegir específicamente la versión DDR5","board"],["Memoria RAM","32 GB DDR5 (2 × 16 GB)",2899,"Kit DDR5; precio estimado","ddr5"],["Almacenamiento","SSD NVMe 1 TB",1099,"M.2 NVMe","ssd"],["Gráficos","Intel UHD Graphics integrados",0,"Gráficos integrados en CPU no-F; rendimiento limitado en juegos","intelcpu"],["Fuente de poder","Fuente 650 W de marca identificable",999,"Verificar conectores","psu"],["Gabinete","Gabinete Micro-ATX ventilado",899,"Verificar formato","case"]
+    ]}],
+    trabajo:[{name:"PC Intel DDR5 para estudio",parts:[
+      ["Procesador","Intel Core i5-14400",4299,"Socket LGA1700; comprobar la versión exacta","intelcpu"],["Tarjeta madre","B760M DDR5 LGA1700",2299,"Debe ser la variante DDR5","board"],["Memoria RAM","16 GB DDR5 (2 × 8 GB)",1799,"Kit DDR5; precio estimado","ddr5"],["Almacenamiento","SSD NVMe 1 TB",1099,"M.2 NVMe","ssd"],["Gráficos","Intel UHD Graphics integrados",0,"Adecuados para tareas de oficina y vídeo","intelcpu"],["Fuente de poder","Fuente 500 W de marca identificable",699,"Verificar protecciones","psu"],["Gabinete","Gabinete Micro-ATX ventilado",899,"Verificar dimensiones","case"]
+    ]}],
+    creacion:[{name:"PC Intel DDR5 para creación",parts:[
+      ["Procesador","Intel Core i7-14700",5999,"20 núcleos híbridos; verificar socket y refrigeración","intelcpu"],["Tarjeta madre","B760M DDR5 LGA1700",2299,"Versión DDR5","board"],["Memoria RAM","32 GB DDR5 (2 × 16 GB)",2899,"Kit DDR5","ddr5"],["Almacenamiento","SSD NVMe 1 TB",1099,"M.2 NVMe","ssd"],["Tarjeta gráfica","NVIDIA GeForce RTX 5060 8 GB",8999,"Precio orientativo; confirmar disponibilidad y consumo","gpu"],["Fuente de poder","Fuente 750 W de marca identificable",1399,"Verificar requisitos exactos de la GPU","psu"],["Gabinete","Gabinete ATX ventilado",1199,"Confirmar espacio para gráfica","case"]
+    ]}]
+  }
+};
+
 const ramOptions = {
   "16kit": { name:"16 GB DDR4 3200 MHz (2 × 8 GB)", price:1199, specs:"Kit de doble canal; referencia de precio, confirma el modelo exacto", image:"ram" },
   "16single": { name:"16 GB DDR4 3200 MHz (1 × 16 GB)", price:1500, specs:"Un módulo DDR4; precio estimado", image:"ram" },
   "32kit": { name:"32 GB DDR4 3200 MHz (2 × 16 GB)", price:2399, specs:"Kit de doble canal; precio de referencia, puede variar", image:"ram" },
   "8ddr3": { name:"8 GB DDR3 1600 MHz (2 × 4 GB)", price:396, specs:"Precio publicado en Mercado Libre; solo para placas DDR3 antiguas", image:"ddr3" },
-  "16ddr3": { name:"16 GB DDR3 1600 MHz (2 × 8 GB)", price:792, specs:"Precio estimado; confirma el máximo soportado por la placa", image:"ddr3" }
+  "16ddr3": { name:"16 GB DDR3 1600 MHz (2 × 8 GB)", price:792, specs:"Precio estimado; confirma el máximo soportado por la placa", image:"ddr3" },
+  "16ddr5": { name:"16 GB DDR5 (2 × 8 GB)", price:1799, specs:"Kit DDR5 de referencia; solo para placa compatible con DDR5", image:"ddr5" },
+  "32ddr5": { name:"32 GB DDR5 (2 × 16 GB)", price:2899, specs:"Kit DDR5 de referencia; confirma velocidad y compatibilidad", image:"ddr5" },
+  "64ddr5": { name:"64 GB DDR5 (2 × 32 GB)", price:4999, specs:"Kit DDR5 de referencia; confirma capacidad máxima de la placa", image:"ddr5" }
 };
 function actualizarOpcionesRAM(){
   const plataforma = $("plataforma-select").value;
@@ -559,7 +655,10 @@ function actualizarOpcionesRAM(){
   const actual = select.value;
   if(plataforma === "intel-ddr3" || plataforma === "amd-ddr3"){
     select.innerHTML = '<option value="8ddr3">8 GB DDR3 1600 MHz (2 × 4 GB) — $396 MXN</option><option value="16ddr3">16 GB DDR3 1600 MHz (2 × 8 GB) — $792 MXN (estimado)</option>';
-    select.value = actual === "16ddr3" ? "16ddr3" : "8ddr3";
+    select.value = ["8ddr3","16ddr3"].includes(actual) ? actual : "8ddr3";
+  } else if(plataforma === "amd5" || plataforma === "intel5"){
+    select.innerHTML = '<option value="16ddr5">16 GB DDR5 (2 × 8 GB) — $1,799 MXN (estimado)</option><option value="32ddr5">32 GB DDR5 (2 × 16 GB) — $2,899 MXN (estimado)</option><option value="64ddr5">64 GB DDR5 (2 × 32 GB) — $4,999 MXN (estimado)</option>';
+    select.value = ["16ddr5","32ddr5","64ddr5"].includes(actual) ? actual : "32ddr5";
   } else {
     select.innerHTML = '<option value="16kit">16 GB DDR4 3200 MHz (2 × 8 GB) — $1,199 MXN</option><option value="16single">16 GB DDR4 3200 MHz (1 × 16 GB) — $1,500 MXN (estimado)</option><option value="32kit">32 GB DDR4 3200 MHz (2 × 16 GB) — $2,399 MXN</option>';
     select.value = ["16kit","16single","32kit"].includes(actual) ? actual : "16kit";
@@ -584,19 +683,27 @@ const gpuOptions = {
   gtx1650: {name:"NVIDIA GeForce GTX 1650 4 GB GDDR6", price:3199, specs:"Tarjeta de entrada de generación anterior; PCIe 3.0; precio publicado en tienda mexicana, verifica existencias y conector exacto", image:"gpu1650"},
   rx580: {name:"AMD Radeon RX 580 8 GB GDDR5", price:3173, specs:"8 GB de VRAM; consumo relativamente alto; precio de referencia de publicación en Mercado Libre; verifica versión, estado y fuente recomendada", image:"rx580"},
   gtx1660s: {name:"NVIDIA GeForce GTX 1660 SUPER 6 GB GDDR6 (usada)", price:4000, specs:"Tarjeta usada de gama media anterior; precio de publicación en Mercado Libre; pide pruebas de temperatura y funcionamiento", image:"gtx1660s"},
-  rx6600: {name:"AMD Radeon RX 6600 8 GB GDDR6 (reacondicionada)", price:6428, specs:"Rendimiento para juegos en 1080p; precio de referencia para reacondicionada; confirma garantía y stock", image:"rx6600"}
+  rx6600: {name:"AMD Radeon RX 6600 8 GB GDDR6 (reacondicionada)", price:6428, specs:"Rendimiento para juegos en 1080p; precio de referencia para reacondicionada; confirma garantía y stock", image:"rx6600"},
+  gtx1050ti: {name:"NVIDIA GeForce GTX 1050 Ti 4 GB (usada)", price:1800, specs:"Modelo anterior para juegos ligeros; precio estimado de segunda mano", image:"gpu1650"},
+  gtx1060: {name:"NVIDIA GeForce GTX 1060 6 GB (usada)", price:2200, specs:"Generación Pascal; precio estimado de segunda mano", image:"gtx1660s"},
+  gtx1070: {name:"NVIDIA GeForce GTX 1070 8 GB (usada)", price:2800, specs:"Generación Pascal; precio estimado de segunda mano", image:"gtx1660s"},
+  rtx2060: {name:"NVIDIA GeForce RTX 2060 6 GB (usada)", price:3500, specs:"Generación Turing; precio estimado de segunda mano", image:"gpu"},
+  rtx3060: {name:"NVIDIA GeForce RTX 3060 12 GB", price:5999, specs:"Generación Ampere; precio de referencia estimado", image:"gpu"},
+  rtx4060: {name:"NVIDIA GeForce RTX 4060 8 GB", price:8999, specs:"Generación Ada Lovelace; precio de referencia, confirma vendedor", image:"gpu"},
+  rtx5060: {name:"NVIDIA GeForce RTX 5060 8 GB", price:8999, specs:"Generación Blackwell; precio orientativo, confirma disponibilidad", image:"gpu"},
+  rx570: {name:"AMD Radeon RX 570 8 GB (usada)", price:1500, specs:"Generación Polaris; precio estimado de segunda mano", image:"rx580"},
+  rx7600: {name:"AMD Radeon RX 7600 8 GB", price:6499, specs:"Generación RDNA 3; precio orientativo", image:"rx6600"},
+  arcA750: {name:"Intel Arc A750 8 GB", price:4999, specs:"Intel Arc Alchemist; comprobar Resizable BAR y requisitos de plataforma", image:"gpu"}
 };
 
 function actualizarOpcionesGPU(){
-  const plataforma = $("plataforma-select").value;
   const select = $("gpu-select");
   const anterior = select.value;
-  select.innerHTML = '<option value="catalog">Mantener la gráfica sugerida para esta PC</option><option value="gtx1650">NVIDIA GeForce GTX 1650 4 GB — $3,199 MXN</option><option value="rx580">AMD Radeon RX 580 8 GB — $3,173 MXN</option><option value="gtx1660s">NVIDIA GeForce GTX 1660 SUPER 6 GB — $4,000 MXN (usada)</option><option value="rx6600">AMD Radeon RX 6600 8 GB — $6,428 MXN (reacondicionada)</option>';
-  if (anterior !== "catalog" && gpuOptions[anterior]) select.value = anterior;
-  else if (plataforma === "amd-ddr3" || plataforma === "intel-ddr3") select.value = "gtx1650";
+  select.innerHTML = '<option value="catalog">Mantener la gráfica sugerida para esta PC</option>' +
+    Object.entries(gpuOptions).map(([key,g])=>`<option value="${key}">${g.name} — ${money(g.price)}</option>`).join("");
+  if(anterior !== "catalog" && gpuOptions[anterior]) select.value = anterior;
   else select.value = "catalog";
 }
-
 function aplicarGrafica(pc){
   const clave = $("gpu-select").value;
   if (clave === "catalog" || !gpuOptions[clave]) return pc;
@@ -621,6 +728,24 @@ function aplicarGabinete(pc){
   })};
 }
 
+const fanOptions = {
+  standard:{name:"Ventilador estándar de 80 mm",price:120,specs:"Tamaño compacto; precio estimado; revisa orificios de montaje y conector",image:"fan80"},
+  "92mm":{name:"Ventilador de 92 mm",price:140,specs:"Tamaño intermedio; precio estimado; revisa compatibilidad con el gabinete",image:"fan"},
+  "120mm":{name:"Ventilador de 120 mm",price:150,specs:"Tamaño común de gabinete; precio estimado; verifica flujo de aire y conector",image:"fan120"},
+  "140mm":{name:"Ventilador de 140 mm",price:190,specs:"Ventilador grande; solo cabe en soportes de 140 mm compatibles",image:"fan140"},
+  kit120:{name:"Kit de 3 ventiladores de 120 mm",price:399,specs:"Kit de tres; precio estimado; verifica conectores PWM/ARGB y espacio",image:"fan120"}
+};
+function aplicarVentiladores(pc){
+  const opcion = fanOptions[$("fan-select").value] || fanOptions["120mm"];
+  let agregado = false;
+  const parts = pc.parts.map(part=>{
+    if(part[0].includes("Ventilador")) { agregado=true; return ["Ventiladores",opcion.name,opcion.price,opcion.specs,opcion.image]; }
+    return [...part];
+  });
+  if(!agregado) parts.push(["Ventiladores",opcion.name,opcion.price,opcion.specs,opcion.image]);
+  return {...pc,parts};
+}
+
 function totalPC(pc){
   return pc.parts.reduce((sum,part)=>sum+part[2],0);
 }
@@ -643,6 +768,14 @@ document.querySelectorAll("[data-budget]").forEach(button=>{
 });
 $("presupuesto").addEventListener("input",actualizarBotones);
 
+function wikiTitleForPart(category,name){
+  if(category === "Procesador" || category === "Tarjeta gráfica" || category === "Gráficos") return name.replace(/\s+\([^)]*\)/g, "");
+  if(category === "Memoria RAM") return name.includes("DDR3") ? "DDR3 SDRAM" : name.includes("DDR5") ? "DDR5 SDRAM" : "DDR4 SDRAM";
+  if(category.includes("Ventilador")) return "Computer fan";
+  if(category === "Disipador") return "CPU cooler";
+  return "";
+}
+
 function renderPC(pc,budget,uso){
   const total=totalPC(pc);
   const remaining=budget-total;
@@ -651,17 +784,19 @@ function renderPC(pc,budget,uso){
     const [category,name,price,specs,imageKey]=part;
     let image=images[imageKey] || images.cpu;
     // Selección de foto por modelo/categoría para que cada pieza muestre una imagen apropiada.
-    if(category === "Procesador" && name.includes("Intel")) image=images.intelcpu;
+    if(category === "Procesador" && name.includes("Intel")) image=/Pentium|Core 2|i5-3470/i.test(name) ? images.cpuIntelOld : images.cpuIntelModern;
     else if(category === "Procesador" && name.includes("5600G")) image=images.cpu5600g;
     else if(category === "Procesador" && name.includes("5500")) image=images.cpu5500;
     else if(category === "Procesador" && name.includes("5700X")) image=images.cpu5700x;
     else if(category === "Procesador" && /Athlon|Phenom|FX-|Ryzen/i.test(name)) image=images.cpu;
     if(category === "Tarjeta madre" && name.includes("A520M")) image=images.boardA520;
     if(category === "Memoria RAM" && name.includes("DDR3")) image=images.ddr3;
+    if(category === "Memoria RAM" && name.includes("DDR5")) image=images.ddr5;
+    if(category === "Memoria RAM" && name.includes("DDR4")) image=images.ddr4;
     if(category.includes("Almacenamiento") && /HDD|disco duro/i.test(name)) image=images.hdd;
     if(category.includes("Almacenamiento") && /SSD|NVMe/i.test(name)) image=images.ssd;
     if(category.includes("Wi-Fi") || category.includes("Conectividad")) image=images.wifi;
-    if(category.includes("Ventilador")) image=images.fan;
+    if(category.includes("Ventilador")) image = imageKey === "fan80" ? images.fan80 : imageKey === "fan140" ? images.fan140 : images.fan120;
     if(category === "Disipador") image=images.cooler;
     if(category === "Gráficos" && /integrados|Intel UHD|Radeon integrados/i.test(name)) image=images.cpu;
     const alt = `${category}: ${name}`.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
@@ -669,7 +804,7 @@ function renderPC(pc,budget,uso){
     const fallback = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240"><rect width="320" height="240" rx="18" fill="#16243a"/><rect x="25" y="25" width="270" height="135" rx="12" fill="#0b1321" stroke="#39d8f2" stroke-width="3"/><text x="160" y="88" fill="#39d8f2" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">ArmaPC MX</text><text x="160" y="120" fill="#f4f7ff" font-family="Arial" font-size="15" text-anchor="middle">${category.replace(/[<>&]/g, "")}</text><text x="160" y="195" fill="#f4f7ff" font-family="Arial" font-size="13" text-anchor="middle">Foto no disponible</text></svg>`);
     return `
       <article class="part">
-        <img src="${image}" alt="${alt}" title="${alt}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
+        <img src="${image}" data-wiki="${encodeURIComponent(wikiTitleForPart(category,name))}" alt="${alt}" title="${alt}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
         <div>
           <h4>${category}: ${name}</h4>
           <p class="specs">${specs}</p>
@@ -703,6 +838,7 @@ function renderPC(pc,budget,uso){
       <div class="total"><span>Total aproximado</span><strong>${money(total)}</strong></div>
       ${remainingHTML}
     </article>`;
+  document.querySelectorAll('#result-content img[data-wiki]').forEach(img=>{ if(img.dataset.wiki && decodeURIComponent(img.dataset.wiki)) loadCatalogPhoto(img); });
 }
 
 function elegirConfiguracion(uso, budget) {
@@ -711,9 +847,13 @@ function elegirConfiguracion(uso, budget) {
     ? (amdLegacyCatalog[uso] || amdLegacyCatalog.gaming)
     : plataforma === "intel-ddr3"
       ? (intelCatalog.legacy[uso] || intelCatalog.legacy.gaming)
-      : plataforma === "intel"
-      ? (intelCatalog.intel[uso] || intelCatalog.intel.gaming)
-      : (catalog[uso] || catalog.gaming);
+      : plataforma === "intel5"
+        ? (ddr5Catalog.intel5[uso] || ddr5Catalog.intel5.gaming)
+        : plataforma === "amd5"
+          ? (ddr5Catalog.amd5[uso] || ddr5Catalog.amd5.gaming)
+          : plataforma === "intel"
+            ? (intelCatalog.intel[uso] || intelCatalog.intel.gaming)
+            : (catalog[uso] || catalog.gaming);
   const compatibles = opciones
     .map(pc => ({ pc, total: totalPC(pc) }))
     .filter(item => item.total <= budget)
@@ -750,6 +890,7 @@ $("config-form").addEventListener("submit", event => {
   seleccion.pc = aplicarRAM(seleccion.pc);
   seleccion.pc = aplicarGrafica(seleccion.pc);
   seleccion.pc = aplicarGabinete(seleccion.pc);
+  seleccion.pc = aplicarVentiladores(seleccion.pc);
   seleccion.dentro = totalPC(seleccion.pc) <= budget;
   renderPC(seleccion.pc, budget, uso);
 
@@ -775,10 +916,101 @@ $("pdf-button").addEventListener("click", () => {
   window.print();
 });
 
+
+// Catálogo visual de modelos representativos, por año y fabricante.
+const historicalCatalog = [
+  // NVIDIA GeForce
+  ...[
+    [2000,"GeForce2 GTS","GeForce 2 series"],[2001,"GeForce3 Ti500","GeForce 3"],[2002,"GeForce4 Ti 4600","GeForce 4"],[2003,"GeForce FX 5950 Ultra","GeForce FX series"],[2004,"GeForce 6800 Ultra","GeForce 6 series"],[2005,"GeForce 7800 GTX","GeForce 7 series"],[2006,"GeForce 8800 GTX","GeForce 8 series"],[2008,"GeForce 9800 GTX","GeForce 9 series"],[2008,"GeForce GTX 280","GeForce 200 series"],[2010,"GeForce GTX 480","GeForce 400 series"],[2011,"GeForce GTX 580","GeForce 500 series"],[2012,"GeForce GTX 680","GeForce 600 series"],[2013,"GeForce GTX 780 Ti","GeForce 700 series"],[2014,"GeForce GTX 980","GeForce 900 series"],[2015,"GeForce GTX 950","GeForce GTX 950"],[2016,"GeForce GTX 1060","GeForce GTX 1060"],[2017,"GeForce GTX 1080 Ti","GeForce GTX 1080 Ti"],[2018,"GeForce RTX 2080 Ti","GeForce RTX 2080 Ti"],[2019,"GeForce GTX 1660 SUPER","GeForce GTX 1660 SUPER"],[2020,"GeForce RTX 3080","GeForce RTX 3080"],[2021,"GeForce RTX 3090 Ti","GeForce RTX 3090 Ti"],[2022,"GeForce RTX 4090","GeForce RTX 4090"],[2023,"GeForce RTX 4070 SUPER","GeForce RTX 4070 SUPER"],[2024,"GeForce RTX 4080 SUPER","GeForce RTX 4080 SUPER"],[2025,"GeForce RTX 5090","GeForce RTX 5090"],[2025,"GeForce RTX 5070","GeForce RTX 5070"],[2026,"GeForce RTX 50 series (modelos vigentes)","GeForce RTX 50 series"]
+  ].map(([year,name,page])=>({type:"gpu",brand:"NVIDIA",year,name,page,description:"GeForce de escritorio; las especificaciones varían por versión."})),
+  // ATI/AMD Radeon
+  ...[
+    [2000,"ATI Radeon DDR","Radeon R100"],[2002,"ATI Radeon 9700 Pro","Radeon 9700"],[2003,"ATI Radeon 9800 XT","Radeon 9800"],[2004,"ATI Radeon X800 XT","Radeon X800"],[2005,"ATI Radeon X1800 XT","Radeon X1800"],[2006,"ATI Radeon X1950 XTX","Radeon X1950"],[2007,"ATI Radeon HD 2900 XT","Radeon HD 2000 series"],[2008,"ATI Radeon HD 4870","Radeon HD 4000 series"],[2009,"ATI Radeon HD 5870","Radeon HD 5000 series"],[2010,"AMD Radeon HD 6970","Radeon HD 6000 series"],[2012,"AMD Radeon HD 7970","Radeon HD 7000 series"],[2013,"AMD Radeon R9 290X","Radeon R9 200 series"],[2015,"AMD Radeon R9 Fury X","Radeon R9 Fury X"],[2016,"AMD Radeon RX 480","Radeon RX 480"],[2017,"AMD Radeon RX Vega 64","Radeon RX Vega"],[2019,"AMD Radeon RX 5700 XT","Radeon RX 5700 XT"],[2020,"AMD Radeon RX 6800 XT","Radeon RX 6800 XT"],[2022,"AMD Radeon RX 7900 XTX","Radeon RX 7900 XTX"],[2023,"AMD Radeon RX 7800 XT","Radeon RX 7800 XT"],[2024,"AMD Radeon RX 7900 GRE","Radeon RX 7900 GRE"],[2025,"AMD Radeon RX 9070 XT","Radeon RX 9070 XT"],[2025,"AMD Radeon RX 9060 XT","Radeon RX 9060 XT"],[2026,"AMD Radeon RX 9000 series (modelos vigentes)","Radeon RX 9000 series"]
+  ].map(([year,name,page])=>({type:"gpu",brand:"ATI/AMD",year,name,page,description:"Radeon de escritorio; las especificaciones varían por versión."})),
+  // Intel discrete graphics
+  ...[
+    [2000,"Intel 740 (i740)","Intel740"],[2022,"Intel Arc A380","Intel Arc A-series"],[2022,"Intel Arc A750","Intel Arc A750"],[2022,"Intel Arc A770","Intel Arc A770"],[2024,"Intel Arc B580","Intel Arc B580"],[2025,"Intel Arc B570","Intel Arc B570"],[2026,"Intel Arc B-series","Intel Arc B-series"]
+  ].map(([year,name,page])=>({type:"gpu",brand:"Intel",year,name,page,description:"Gráfica dedicada Intel; comprueba soporte de plataforma y controladores."})),
+  // AMD CPU families
+  ...[
+    [2000,"AMD Athlon Thunderbird","Athlon"],[2003,"AMD Athlon 64 3200+","Athlon 64"],[2005,"AMD Athlon 64 X2 4800+","Athlon 64 X2"],[2007,"AMD Phenom X4 9850","AMD Phenom"],[2009,"AMD Phenom II X4 955","AMD Phenom II"],[2011,"AMD FX-8150","AMD FX"],[2012,"AMD FX-8350","AMD FX"],[2013,"AMD Athlon 5350","AMD Athlon"],[2017,"AMD Ryzen 7 1800X","Ryzen 7 1800X"],[2018,"AMD Ryzen 5 2600","Ryzen 5 2600"],[2019,"AMD Ryzen 9 3900X","Ryzen 9 3900X"],[2020,"AMD Ryzen 5 5600X","Ryzen 5 5600X"],[2022,"AMD Ryzen 7 5800X3D","Ryzen 7 5800X3D"],[2022,"AMD Ryzen 9 7950X","Ryzen 9 7950X"],[2023,"AMD Ryzen 5 7600","Ryzen 5 7600"],[2024,"AMD Ryzen 7 9800X3D","Ryzen 7 9800X3D"],[2025,"AMD Ryzen 9 9950X3D","Ryzen 9 9950X3D"],[2026,"AMD Ryzen desktop series (modelos vigentes)","Ryzen"]
+  ].map(([year,name,page])=>({type:"cpu",brand:"AMD",year,name,page,description:"Procesador AMD; verifica socket, placa madre, BIOS y tipo de RAM."})),
+  // Intel CPU families
+  ...[
+    [2000,"Intel Pentium 4","Pentium 4"],[2003,"Intel Pentium 4 Prescott","Pentium 4"],[2006,"Intel Core 2 Duo E6600","Core 2"],[2007,"Intel Core 2 Quad Q6600","Core 2"],[2008,"Intel Core i7-920","Nehalem (microarchitecture)"],[2010,"Intel Core i5-2500K","Sandy Bridge"],[2012,"Intel Core i7-3770K","Ivy Bridge"],[2013,"Intel Core i7-4770K","Haswell (microarchitecture)"],[2015,"Intel Core i7-6700K","Skylake (microarchitecture)"],[2017,"Intel Core i7-7700K","Kaby Lake"],[2018,"Intel Core i7-9700K","Coffee Lake"],[2020,"Intel Core i9-10900K","Comet Lake"],[2021,"Intel Core i5-12600K","Alder Lake"],[2022,"Intel Core i9-13900K","Raptor Lake"],[2023,"Intel Core i7-14700K","Raptor Lake Refresh"],[2024,"Intel Core Ultra 9 285K","Arrow Lake"],[2025,"Intel Core Ultra desktop series","Intel Core Ultra"],[2026,"Intel Core Ultra series (modelos vigentes)","Intel Core Ultra"]
+  ].map(([year,name,page])=>({type:"cpu",brand:"Intel",year,name,page,description:"Procesador Intel; revisa socket, generación, BIOS y memoria compatible."})),
+  ...[
+    {type:"ram",brand:"Varios",year:2007,name:"Memoria RAM DDR3",page:"DDR3 SDRAM",description:"DDR3: usada en muchas plataformas antiguas; no es compatible físicamente con DDR4/DDR5."},
+    {type:"ram",brand:"Varios",year:2014,name:"Memoria RAM DDR4",page:"DDR4 SDRAM",description:"DDR4: común en plataformas de varias generaciones; verifica velocidad admitida."},
+    {type:"ram",brand:"Varios",year:2021,name:"Memoria RAM DDR5",page:"DDR5 SDRAM",description:"DDR5: requiere placa madre y procesador compatibles."},
+    {type:"fan",brand:"Varios",year:2000,name:"Ventilador estándar de 80 mm",page:"Computer fan",description:"Ventilador compacto para gabinetes compatibles; revisa patrón de tornillos y conector."},
+    {type:"fan",brand:"Varios",year:2005,name:"Ventilador de 92 mm",page:"Computer fan",description:"Tamaño intermedio; confirma el soporte del gabinete o disipador."},
+    {type:"fan",brand:"Varios",year:2005,name:"Ventilador de 120 mm",page:"Computer fan",description:"Tamaño común para entrada/salida de aire; confirma espacio y conector."},
+    {type:"fan",brand:"Varios",year:2010,name:"Ventilador de 140 mm",page:"Computer fan",description:"Mayor tamaño; solo sirve en montajes compatibles."}
+  ]
+];
+
+function catalogFallback(item){
+  const safeName = item.name.replace(/[<>&"']/g, "").slice(0,42);
+  const color = item.type === "gpu" ? "#39d8f2" : item.type === "cpu" ? "#59e3a0" : "#ffca75";
+  return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320"><rect width="480" height="320" fill="#0b1321"/><rect x="18" y="18" width="444" height="284" rx="18" fill="#16243a" stroke="${color}" stroke-width="3"/><text x="240" y="90" text-anchor="middle" fill="${color}" font-family="Arial" font-size="20" font-weight="bold">ARMAPC MX · ${item.year}</text><text x="240" y="155" text-anchor="middle" fill="#f4f7ff" font-family="Arial" font-size="17">${safeName}</text><text x="240" y="240" text-anchor="middle" fill="#a5b4c9" font-family="Arial" font-size="14">Imagen de referencia no disponible</text></svg>`);
+}
+function catalogYearMatches(year,range){
+  if(range === "all") return true;
+  const [a,b] = range.split("-").map(Number);
+  return year >= a && year <= b;
+}
+function renderCatalog(){
+  const query = $("catalog-search").value.trim().toLowerCase();
+  const type = $("catalog-type").value;
+  const brand = $("catalog-brand").value;
+  const range = $("catalog-year").value;
+  const sort = $("catalog-sort").value;
+  let items = historicalCatalog.filter(item => (type === "all" || item.type === type) && (brand === "all" || item.brand === brand || (brand === "AMD" && item.brand === "ATI/AMD")) && catalogYearMatches(item.year,range) && `${item.name} ${item.brand} ${item.year} ${item.description}`.toLowerCase().includes(query));
+  if(sort === "year-desc") items.sort((a,b)=>b.year-a.year || a.name.localeCompare(b.name));
+  else if(sort === "name") items.sort((a,b)=>a.name.localeCompare(b.name));
+  else items.sort((a,b)=>a.year-b.year || a.name.localeCompare(b.name));
+  $("catalog-count").textContent = `${items.length} modelos o familias encontrados.`;
+  const grid = $("catalog-grid");
+  grid.innerHTML = items.length ? items.map((item,index)=>{
+    const id = `catalog-image-${index}`;
+    const alt = `${item.name}, ${item.year}`.replace(/[&"]/g, "");
+    return `<article class="catalog-item"><img id="${id}" src="${catalogFallback(item)}" data-wiki="${encodeURIComponent(item.page)}" alt="${alt}" loading="lazy"><div class="catalog-info"><span class="catalog-tag">${item.year}</span><span class="catalog-tag">${item.brand}</span><span class="catalog-tag">${item.type === "gpu" ? "Gráfica" : item.type === "cpu" ? "Procesador" : item.type === "ram" ? "RAM" : "Ventilador"}</span><h3>${item.name}</h3><p>${item.description}</p></div></article>`;
+  }).join("") : '<div class="catalog-empty">No hay resultados con esos filtros. Prueba otra marca, año o palabra.</div>';
+  // Cargar imágenes reales de artículos de referencia con lazy-loading y respaldo visible.
+  if("IntersectionObserver" in window){
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        const img = entry.target; observer.unobserve(img);
+        loadCatalogPhoto(img);
+      });
+    },{rootMargin:"180px"});
+    grid.querySelectorAll("img[data-wiki]").forEach(img=>observer.observe(img));
+  } else grid.querySelectorAll("img[data-wiki]").forEach(loadCatalogPhoto);
+}
+async function loadCatalogPhoto(img){
+  if(img.dataset.loaded) return; img.dataset.loaded="1";
+  const title = decodeURIComponent(img.dataset.wiki || "");
+  try{
+    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&piprop=thumbnail&pithumbsize=480&titles=${encodeURIComponent(title)}`;
+    const response = await fetch(url,{mode:"cors"});
+    if(!response.ok) return;
+    const data = await response.json();
+    const pages = Object.values(data?.query?.pages || {});
+    const thumbnail = pages.find(page=>page.thumbnail?.source)?.thumbnail?.source;
+    if(thumbnail) img.src=thumbnail;
+  }catch(_error){ /* La imagen de respaldo ya está visible. */ }
+}
+["catalog-search","catalog-type","catalog-brand","catalog-year","catalog-sort"].forEach(id=>$(id).addEventListener(id === "catalog-search" ? "input" : "change",renderCatalog));
+$("catalog-reset").addEventListener("click",()=>{
+  $("catalog-search").value=""; $("catalog-type").value="all"; $("catalog-brand").value="all"; $("catalog-year").value="all"; $("catalog-sort").value="year-asc"; renderCatalog();
+});
+renderCatalog();
+
 $("year").textContent = new Date().getFullYear();
 actualizarBotones();
 
 </script>
 </body>
 </html>
-
