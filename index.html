@@ -157,15 +157,54 @@ footer p{font-size:11px}
     </div>
 
     <fieldset class="ram-options">
+      <legend>¿Qué plataforma quieres?</legend>
+      <label class="ram-choice" for="plataforma-select">Procesador y compatibilidad</label>
+      <select id="plataforma-select" name="plataforma" class="ram-select">
+        <option value="amd" selected>AMD AM4 moderno — DDR4</option>
+        <option value="amd-ddr3">AMD antiguo — Athlon / Phenom / FX — DDR3</option>
+        <option value="intel">Intel moderno — DDR4</option>
+        <option value="intel-ddr3">Intel antiguo — DDR3 (económico)</option>
+      </select>
+      <p class="notice">Importante: DDR3 solo funciona con placas madre compatibles de generaciones antiguas. Athlon II y Phenom II suelen usar AM3; FX suele usar AM3+. No se puede instalar DDR3 en una placa DDR4 o DDR5.</p>
+    </fieldset>
+
+    <fieldset class="ram-options">
       <legend>¿Cuánta memoria RAM quieres?</legend>
-      <p class="ram-help">Elige una opción DDR4 compatible con las tarjetas madre AM4 de este catálogo. El total se actualizará automáticamente.</p>
+      <p class="ram-help">Elige la memoria compatible con la plataforma seleccionada. El total se actualizará automáticamente.</p>
       <label class="ram-choice" for="ram-select">Memoria RAM</label>
       <select id="ram-select" name="ram" class="ram-select">
-        <option value="16kit">16 GB DDR4 3200 MHz (2 × 8 GB) — $3,677 MXN</option>
-        <option value="16single">16 GB DDR4 3200 MHz (1 × 16 GB) — $3,015 MXN</option>
-        <option value="32kit" selected>32 GB DDR4 3200 MHz (2 × 16 GB) — $4,583 MXN</option>
+        <option value="16kit">16 GB DDR4 3200 MHz (2 × 8 GB) — $1,199 MXN (referencia)</option>
+        <option value="16single">16 GB DDR4 3200 MHz (1 × 16 GB) — $1,500 MXN (estimado)</option>
+        <option value="32kit" selected>32 GB DDR4 3200 MHz (2 × 16 GB) — $2,399 MXN (referencia)</option>
+        <option value="8ddr3">8 GB DDR3 1600 MHz (2 × 4 GB) — $396 MXN</option>
+        <option value="16ddr3">16 GB DDR3 1600 MHz (2 × 8 GB) — $792 MXN (estimado)</option>
       </select>
       <p class="notice">Precios de referencia consultados en Mercado Libre y comparadores de tiendas; confirma precio, vendedor, envío y disponibilidad antes de comprar.</p>
+    </fieldset>
+
+    <fieldset class="ram-options">
+      <legend>¿Qué tarjeta gráfica quieres?</legend>
+      <label class="ram-choice" for="gpu-select">Tarjeta gráfica dedicada</label>
+      <select id="gpu-select" name="grafica" class="ram-select">
+        <option value="catalog" selected>Mantener la gráfica sugerida para esta PC</option>
+        <option value="gtx1650">NVIDIA GeForce GTX 1650 4 GB — $3,199 MXN (referencia)</option>
+        <option value="rx580">AMD Radeon RX 580 8 GB — $3,173 MXN (referencia)</option>
+        <option value="gtx1660s">NVIDIA GeForce GTX 1660 SUPER 6 GB — $4,000 MXN (usada)</option>
+        <option value="rx6600">AMD Radeon RX 6600 8 GB — $6,428 MXN (reacondicionada)</option>
+      </select>
+      <p class="notice">Modelos de generaciones anteriores que todavía pueden servir para juegos en 1080p, según el juego y los ajustes. Los precios cambian; revisa estado, vendedor, consumo y conectores. En equipos antiguos, el procesador puede limitar el rendimiento.</p>
+    </fieldset>
+
+    <fieldset class="ram-options">
+      <legend>¿Qué gabinete quieres?</legend>
+      <p class="ram-help">Elige la caja de tu PC. El total se actualizará automáticamente; revisa que sea compatible con el tamaño de la tarjeta madre y la gráfica.</p>
+      <label class="ram-choice" for="case-select">Gabinete</label>
+      <select id="case-select" name="gabinete" class="ram-select">
+        <option value="micro">Gabinete Micro-ATX ventilado — $899 MXN</option>
+        <option value="starker" selected>XPG STARKER AIR BTF negro — $1,549 MXN</option>
+        <option value="valor">XPG Valor Air Nano negro — $1,397 MXN</option>
+      </select>
+      <p class="notice">Referencias: XPG STARKER AIR BTF en DD Tech y XPG Valor Air Nano en Mercado Libre. Confirma stock, envío y precio final antes de comprar.</p>
     </fieldset>
 
     <fieldset>
@@ -178,7 +217,7 @@ footer p{font-size:11px}
     </fieldset>
 
     <button type="submit" class="btn submit">Encontrar mi PC →</button>
-    <p class="notice">Precios de referencia consultados en tiendas mexicanas durante octubre de 2026; pueden cambiar por stock, envío y vendedor.</p>
+    <p class="notice">Precios de referencia consultados en tiendas mexicanas durante octubre de 2026; algunos componentes antiguos, HDD, ventiladores y Wi-Fi son estimaciones y pueden cambiar por stock, envío y vendedor.</p>
   </form>
 </section>
 
@@ -199,8 +238,8 @@ footer p{font-size:11px}
   <div class="heading">
     <span class="eyebrow">TRANSPARENCIA DE PRECIOS</span>
     <h2>Referencias de tiendas</h2>
-    <p>Precios de referencia consultados el 28 de octubre de 2026. Para la RTX 4060 usamos un precio publicado de Mercado Libre cercano a $8,999 MXN; otros componentes se basan en referencias publicadas de DD Tech y tiendas mexicanas. No hay conexión automática a inventario, así que confirma el precio final, envío y disponibilidad.</p>
-    <p><a href="https://ddtech.mx/importar/Z7bAB1ULlz15FFlF" target="_blank" rel="noopener noreferrer">Lista de componentes en DD Tech</a> · <a href="https://ddtech.mx/producto/tarjeta-madre-msi-b550m-pro-vdh-wifi-am4-amd-ryzen-3000-series-micro-atx" target="_blank" rel="noopener noreferrer">Tarjeta madre MSI B550M</a> · <a href="https://ddtech.mx/producto/fuente-de-poder-msi-mag-a650bn-80-plus-bronze-20-4-pin-atx-120mm-650w-a650bn" target="_blank" rel="noopener noreferrer">Fuente MSI 650 W</a> · <a href="https://listado.mercadolibre.com.mx/pc-ryzen-5-rtx-4060" target="_blank" rel="noopener noreferrer">Referencias en Mercado Libre</a> · <a href="https://www.amazon.com.mx/s?k=kingston+fury+beast+16gb+ddr4+3200" target="_blank" rel="noopener noreferrer">RAM 16 GB en Amazon México</a> · <a href="https://listado.mercadolibre.com.mx/memoria-ram-32gb-2x16gb-ddr4-3200mhz" target="_blank" rel="noopener noreferrer">RAM 32 GB en Mercado Libre</a> · <a href="https://www.amazon.com.mx/s?k=componentes+pc+gaming" target="_blank" rel="noopener noreferrer">Buscar componentes en Amazon México</a></p>
+    <p>Precios de referencia consultados el 28 de octubre de 2026 en tiendas mexicanas. Intel Core i3-12100 aparece en Tec-Micro a $3,029 MXN, Intel Core i5-12400 a $4,010 MXN y un kit DDR3 de 8 GB a $396 MXN en Mercado Libre. HDD, ventiladores, Wi-Fi y piezas Intel antiguas son estimaciones orientativas. No hay conexión automática a inventario; confirma precio, envío, disponibilidad y compatibilidad.</p>
+    <p><a href="https://tec-micro.mx/categoria/componentes" target="_blank" rel="noopener noreferrer">Intel Core i3/i5 y componentes en Tec-Micro</a> · <a href="https://www.mercadolibre.com.mx/memoria-ram-ddr3-8gb-2x4gb-1600mhz-dimm-rasalas-azul-para-pc-gamer-intel-amd/p/MLM25446840" target="_blank" rel="noopener noreferrer">RAM DDR3 8 GB en Mercado Libre</a> · <a href="https://www.okdock.club/" target="_blank" rel="noopener noreferrer">Componentes y RAM en OK DOCK</a> · <a href="https://ddtech.mx/importar/Z7bAB1ULlz15FFlF" target="_blank" rel="noopener noreferrer">Lista de componentes en DD Tech</a> · <a href="https://ddtech.mx/producto/tarjeta-madre-msi-b550m-pro-vdh-wifi-am4-amd-ryzen-3000-series-micro-atx" target="_blank" rel="noopener noreferrer">Tarjeta madre MSI B550M</a> · <a href="https://ddtech.mx/producto/fuente-de-poder-msi-mag-a650bn-80-plus-bronze-20-4-pin-atx-120mm-650w-a650bn" target="_blank" rel="noopener noreferrer">Fuente MSI 650 W</a> · <a href="https://listado.mercadolibre.com.mx/pc-ryzen-5-rtx-4060" target="_blank" rel="noopener noreferrer">Referencias en Mercado Libre</a> · <a href="https://www.amazon.com.mx/s?k=kingston+fury+beast+16gb+ddr4+3200" target="_blank" rel="noopener noreferrer">RAM 16 GB en Amazon México</a> · <a href="https://listado.mercadolibre.com.mx/memoria-ram-32gb-2x16gb-ddr4-3200mhz" target="_blank" rel="noopener noreferrer">RAM 32 GB en Mercado Libre</a> · <a href="https://ddtech.mx/buscar/starker" target="_blank" rel="noopener noreferrer">Gabinetes XPG en DD Tech</a> · <a href="https://listado.mercadolibre.com.mx/xpg-valor-air-nano" target="_blank" rel="noopener noreferrer">XPG Valor Air Nano en Mercado Libre</a> · <a href="https://www.amazon.com.mx/s?k=componentes+pc+gaming" target="_blank" rel="noopener noreferrer">Buscar componentes en Amazon México</a></p>
   </div>
 </section>
 
@@ -242,9 +281,18 @@ const images = {
   ram:"https://i.ebayimg.com/images/g/Ml0AAOSwebZnOCOV/s-l1200.jpg",
   ssd:"https://media.ldlc.com/r1600/ld/products/00/06/30/63/LD0006306389.jpg",
   gpu:"https://media.ldlc.com/r1600/ld/products/00/06/04/69/LD0006046927.jpg",
+  gpu1650:"https://www.art-comp24.pl/1718-large_default/karta-graficzna-nvidia-gtx1650-4gb-ddr6-dual-fan.jpg",
+  rx580:"https://eshop.macsales.com/images/_gallery_/bin/OWCMP1012R58GVU-pimid76082-lg.jpeg",
+  gtx1660s:"https://www.discoazul.com/uploads/media/images/tarjeta-grafica-asus-tuf-gaming-geforce-gtx-1660-super-6-gb-gddr6-1530-mhz-1.jpg",
+  rx6600:"https://songphuong.vn/Content/uploads/2021/10/070601-VGA-Sapphire-PULSE-Radeon-RX-6600-Gaming-8GB-GDDR6-2-songphuong.vn_-1.jpg",
   psu:"https://www.skytech.lt/images/large/7/2980007.png",
   case:"https://media.digitalife.com.mx/products/44335/62bb8503a4416.jpg",
-  cooler:"https://www.awd-it.co.uk/media/catalog/product/9/1/916-7e4-833_1.jpg?bg-color=255%2C255%2C255&canvas=680%3A680&fit=bounds&height=680&optimize=high&width=680"
+  cooler:"https://www.awd-it.co.uk/media/catalog/product/9/1/916-7e4-833_1.jpg?bg-color=255%2C255%2C255&canvas=680%3A680&fit=bounds&height=680&optimize=high&width=680",
+  intelcpu:"https://www.intel.com/content/dam/www/central-libraries/us/en/images/2023-08/core-i5-processor-badge.png",
+  ddr3:"https://i.ebayimg.com/images/g/Ml0AAOSwebZnOCOV/s-l1200.jpg",
+  hdd:"https://media.ldlc.com/r1600/ld/products/00/05/80/48/LD0005804861.jpg",
+  wifi:"https://m.media-amazon.com/images/I/61zJb7oXWYL._AC_SL1200_.jpg",
+  fan:"https://media.ldlc.com/r1600/ld/products/00/06/02/38/LD0006023898.jpg"
 };
 
 /* Catálogo orientativo. Precios y modelos deben actualizarse
@@ -363,19 +411,214 @@ const catalog = {
   ]
 };
 
-const ramOptions = {
-  "16kit": { name:"16 GB DDR4 3200 MHz (2 × 8 GB)", price:3677, specs:"Kit de doble canal; referencia de precio para kit gaming. Verificar compatibilidad y disponibilidad", image:"ram" },
-  "16single": { name:"16 GB DDR4 3200 MHz (1 × 16 GB)", price:3015, specs:"Un módulo de 16 GB; permite ampliar después, pero no ofrece doble canal por sí solo", image:"ram" },
-  "32kit": { name:"32 GB DDR4 3200 MHz (2 × 16 GB)", price:4583, specs:"Kit de doble canal, adecuado para gaming y multitarea; confirmar modelo y compatibilidad", image:"ram" }
+const intelCatalog = {
+  intel: {
+    gaming: [
+      {name:"PC Intel de entrada",parts:[
+        ["Procesador","Intel Core i3-12100 con gráficos UHD 730",3029,"4 núcleos / 8 hilos; socket LGA1700; precio publicado en Tec-Micro","intelcpu"],
+        ["Tarjeta madre","H610M DDR4 LGA1700",1549,"Elegir versión DDR4; verificar soporte de CPU","board"],
+        ["Memoria RAM","16 GB DDR4 (2 × 8 GB)",1199,"Kit de doble canal; precio de referencia","ram"],
+        ["Almacenamiento","SSD SATA 480 GB",650,"Unidad de estado sólido; precio orientativo","ssd"],
+        ["Gráficos","Intel UHD 730 integrados",0,"Para juegos ligeros; no sustituye una GPU dedicada","gpu"],
+        ["Fuente de poder","Fuente 500 W de marca identificable",699,"Verifica conectores y protecciones","psu"],
+        ["Gabinete","Gabinete Micro-ATX ventilado",899,"Verifica compatibilidad de formato","case"],
+        ["Ventiladores extra","Kit de 2 ventiladores de 120 mm",250,"Precio estimado","fan"]
+      ]},
+      {name:"PC Intel Core i5 con gráfica dedicada",parts:[
+        ["Procesador","Intel Core i5-12400",4010,"6 núcleos / 12 hilos; precio publicado en Tec-Micro","intelcpu"],
+        ["Tarjeta madre","H610M DDR4 LGA1700",1549,"Verifica soporte de CPU y tipo de RAM","board"],
+        ["Memoria RAM","16 GB DDR4 (2 × 8 GB)",1199,"Doble canal","ram"],
+        ["Almacenamiento","SSD NVMe 1 TB",1099,"Verificar formato M.2","ssd"],
+        ["Tarjeta gráfica","NVIDIA GeForce RTX 4060 8 GB",8999,"Precio de referencia; confirmar vendedor y disponibilidad","gpu"],
+        ["Fuente de poder","MSI MAG A650BN 650 W",999,"Precio orientativo; verificar conectores","psu"],
+        ["Gabinete","XPG STARKER AIR BTF",1549,"Verifica espacio de GPU y formato de placa","case"],
+        ["Almacenamiento adicional","HDD SATA 1 TB",799,"Precio estimado para almacenamiento extra","hdd"],
+        ["Ventiladores extra","Kit de 2 ventiladores de 120 mm",250,"Precio estimado","fan"]
+      ]}
+    ],
+    trabajo: [{name:"PC Intel para estudio y oficina",parts:[
+      ["Procesador","Intel Core i3-12100 con gráficos UHD 730",3029,"4 núcleos / 8 hilos; gráficos integrados","intelcpu"],
+      ["Tarjeta madre","H610M DDR4 LGA1700",1549,"Debe ser la versión DDR4","board"],
+      ["Memoria RAM","16 GB DDR4 (2 × 8 GB)",1199,"Doble canal","ram"],
+      ["Almacenamiento","SSD SATA 480 GB",650,"Inicio rápido y aplicaciones","ssd"],
+      ["Gráficos","Intel UHD 730 integrados",0,"Adecuados para ofimática y vídeo","gpu"],
+      ["Fuente de poder","Fuente 500 W",699,"Verificar marca y protecciones","psu"],
+      ["Gabinete","Gabinete Micro-ATX",899,"Verificar dimensiones","case"],
+      ["Conectividad","Adaptador Wi-Fi USB",299,"Precio estimado","wifi"],
+      ["Almacenamiento adicional","HDD SATA 1 TB",799,"Precio estimado","hdd"]
+    ]}],
+    creacion: [{name:"PC Intel para edición y multitarea",parts:[
+      ["Procesador","Intel Core i5-12400",4010,"6 núcleos / 12 hilos; gráficos UHD 730 en versión no-F","intelcpu"],
+      ["Tarjeta madre","H610M DDR4 LGA1700",1549,"Verifica versión DDR4","board"],
+      ["Memoria RAM","32 GB DDR4 (2 × 16 GB)",2399,"Kit de doble canal; precio de referencia","ram"],
+      ["Almacenamiento","SSD NVMe 1 TB",1099,"M.2 compatible","ssd"],
+      ["Tarjeta gráfica","NVIDIA GeForce RTX 4060 8 GB",8999,"Precio de referencia; confirmar disponibilidad","gpu"],
+      ["Fuente de poder","MSI MAG A650BN 650 W",999,"Verificar conectores y protecciones","psu"],
+      ["Gabinete","Gabinete Micro-ATX ventilado",899,"Comprueba espacio para GPU","case"],
+      ["Ventiladores extra","Kit de 2 ventiladores de 120 mm",250,"Precio estimado","fan"],
+      ["Almacenamiento adicional","HDD SATA 1 TB",799,"Precio estimado para archivos y copias","hdd"]
+    ]}]
+  },
+  legacy: {
+    gaming: [{name:"PC Intel antigua económica (DDR3)",parts:[
+      ["Procesador","Intel Core i5-3470 (3.ª generación)",650,"Precio estimado para equipo antiguo/usado; socket LGA1155","intelcpu"],
+      ["Tarjeta madre","H61 LGA1155 compatible con DDR3",650,"Precio estimado; confirmar estado y compatibilidad","board"],
+      ["Memoria RAM","8 GB DDR3 1600 MHz (2 × 4 GB)",396,"Precio publicado en Mercado Libre; solo placas DDR3 compatibles","ddr3"],
+      ["Almacenamiento","SSD SATA 480 GB",650,"Unidad de estado sólido","ssd"],
+      ["Gráficos","Intel HD Graphics 2500 integrados",0,"Solo para tareas y juegos ligeros","gpu"],
+      ["Fuente de poder","Fuente 500 W",699,"Verificar conectores y calidad","psu"],
+      ["Gabinete","Gabinete Micro-ATX",899,"Verificar formato de placa","case"],
+      ["Ventilador extra","Ventilador de 120 mm",150,"Precio estimado","fan"]
+    ]}],
+    trabajo: [{name:"PC Intel DDR3 para escuela y oficina",parts:[
+      ["Procesador","Intel Core i5-3470 (3.ª generación)",650,"Precio estimado para equipo antiguo/usado","intelcpu"],
+      ["Tarjeta madre","H61 LGA1155 compatible con DDR3",650,"Precio estimado; revisar estado","board"],
+      ["Memoria RAM","8 GB DDR3 1600 MHz (2 × 4 GB)",396,"Precio publicado en Mercado Libre","ddr3"],
+      ["Almacenamiento","SSD SATA 480 GB",650,"Unidad de estado sólido","ssd"],
+      ["Gráficos","Intel HD Graphics 2500 integrados",0,"Para oficina y tareas básicas","gpu"],
+      ["Fuente de poder","Fuente 500 W",699,"Verificar calidad y conectores","psu"],
+      ["Gabinete","Gabinete Micro-ATX",899,"Verificar dimensiones","case"],
+      ["Conectividad","Adaptador Wi-Fi USB",299,"Precio estimado","wifi"]
+    ]}],
+    creacion: [{name:"PC Intel DDR3 para uso básico",parts:[
+      ["Procesador","Intel Core i5-3470 (3.ª generación)",650,"Equipo antiguo; no recomendado para edición pesada actual","intelcpu"],
+      ["Tarjeta madre","H61 LGA1155 compatible con DDR3",650,"Precio estimado; comprobar estado","board"],
+      ["Memoria RAM","16 GB DDR3 1600 MHz (2 × 8 GB)",792,"Precio estimado; el máximo depende de la placa","ddr3"],
+      ["Almacenamiento","SSD SATA 480 GB",650,"Unidad de estado sólido","ssd"],
+      ["Gráficos","Intel HD Graphics 2500 integrados",0,"Limitados para edición y streaming actuales","gpu"],
+      ["Fuente de poder","Fuente 500 W",699,"Verificar modelo exacto","psu"],
+      ["Gabinete","Gabinete Micro-ATX",899,"Verificar dimensiones","case"],
+      ["Almacenamiento adicional","HDD SATA 1 TB",799,"Precio estimado","hdd"]
+    ]}]
+  }
 };
 
+const amdLegacyCatalog = {
+  gaming: [
+    {name:"PC AMD FX económica (DDR3)", parts:[
+      ["Procesador","AMD FX-6300 (6 núcleos / 6 hilos)",650,"Socket AM3+; pieza antigua/usada, precio estimado; no incluye gráficos integrados","cpu"],
+      ["Tarjeta madre","Tarjeta madre AM3+ para AMD FX",850,"Debe indicar soporte para FX-6300 y memoria DDR3; precio estimado de pieza usada","board"],
+      ["Memoria RAM","8 GB DDR3 1600 MHz (2 × 4 GB)",396,"Kit DDR3; el precio puede variar por estado y vendedor","ddr3"],
+      ["Almacenamiento","SSD SATA 480 GB",650,"Compatible con SATA; precio de referencia","ssd"],
+      ["Tarjeta gráfica","Tarjeta gráfica básica usada",900,"El FX-6300 requiere tarjeta gráfica dedicada; precio estimado, modelo variable","gpu"],
+      ["Fuente de poder","Fuente 500 W de marca identificable",699,"Revisar modelo, conectores y protecciones; no usar fuentes genéricas dudosas","psu"],
+      ["Gabinete","Gabinete Micro-ATX ventilado",899,"Confirmar tamaño de la placa madre","case"]
+    ]},
+    {name:"PC AMD Phenom II para juegos ligeros (DDR3)", parts:[
+      ["Procesador","AMD Phenom II X4 955",450,"Socket AM3; 4 núcleos; precio estimado de pieza usada","cpu"],
+      ["Tarjeta madre","Tarjeta madre AM3 compatible con Phenom II",750,"Confirmar lista de CPU soportadas y estado de la placa; precio estimado","board"],
+      ["Memoria RAM","8 GB DDR3 1600 MHz (2 × 4 GB)",396,"DDR3; confirmar velocidad admitida por la placa","ddr3"],
+      ["Almacenamiento","SSD SATA 480 GB",650,"Unidad SATA; precio de referencia","ssd"],
+      ["Tarjeta gráfica","Tarjeta gráfica básica usada",900,"El procesador no incluye gráficos integrados; precio estimado","gpu"],
+      ["Fuente de poder","Fuente 500 W de marca identificable",699,"Verificar conectores y protecciones","psu"],
+      ["Gabinete","Gabinete Micro-ATX ventilado",899,"Confirmar formato de la placa madre","case"]
+    ]}
+  ],
+  trabajo: [
+    {name:"PC AMD Athlon II para oficina (DDR3)", parts:[
+      ["Procesador","AMD Athlon II X4 640",350,"Socket AM3; 4 núcleos; pieza antigua/usada, precio estimado","cpu"],
+      ["Tarjeta madre","Tarjeta madre AM3 compatible con Athlon II",650,"Confirmar soporte exacto del procesador; precio estimado","board"],
+      ["Memoria RAM","8 GB DDR3 1600 MHz (2 × 4 GB)",396,"DDR3; confirmar máximo admitido por la placa","ddr3"],
+      ["Almacenamiento","SSD SATA 480 GB",650,"Mejora la respuesta frente a un HDD antiguo","ssd"],
+      ["Gráficos","Gráficos integrados de la placa (si dispone)",0,"Muchos equipos AM3 necesitan una tarjeta gráfica aparte; verifica la placa exacta","gpu"],
+      ["Fuente de poder","Fuente 500 W de marca identificable",699,"Verificar estado y conectores","psu"],
+      ["Gabinete","Gabinete Micro-ATX ventilado",899,"Verificar formato de la placa","case"]
+    ]},
+    {name:"PC AMD Phenom II para oficina (DDR3)", parts:[
+      ["Procesador","AMD Phenom II X4 955",450,"Socket AM3; pieza usada, precio estimado","cpu"],
+      ["Tarjeta madre","Tarjeta madre AM3 compatible con Phenom II",750,"Verificar CPU soportada y memoria DDR3","board"],
+      ["Memoria RAM","8 GB DDR3 1600 MHz (2 × 4 GB)",396,"Precio orientativo","ddr3"],
+      ["Almacenamiento","SSD SATA 480 GB",650,"Unidad SATA","ssd"],
+      ["Tarjeta gráfica","Tarjeta gráfica básica usada",700,"Precio estimado; necesaria si la placa no tiene gráficos integrados","gpu"],
+      ["Fuente de poder","Fuente 500 W de marca identificable",699,"Verificar protecciones y conectores","psu"],
+      ["Gabinete","Gabinete Micro-ATX ventilado",899,"Verificar formato","case"]
+    ]}
+  ],
+  creacion: [{name:"PC AMD FX para tareas básicas (DDR3)", parts:[
+    ["Procesador","AMD FX-6300",650,"Socket AM3+; pieza usada; no incluye gráficos integrados","cpu"],
+    ["Tarjeta madre","Tarjeta madre AM3+ compatible con FX-6300",850,"Verificar CPU soportada y estado; precio estimado","board"],
+    ["Memoria RAM","16 GB DDR3 1600 MHz (2 × 8 GB)",792,"Precio estimado; confirmar máximo admitido por la placa","ddr3"],
+    ["Almacenamiento","SSD SATA 480 GB",650,"Unidad SATA","ssd"],
+    ["Tarjeta gráfica","Tarjeta gráfica usada de entrada",900,"El FX necesita una gráfica dedicada; precio estimado","gpu"],
+    ["Fuente de poder","Fuente 500 W de marca identificable",699,"Verificar calidad y conectores","psu"],
+    ["Gabinete","Gabinete Micro-ATX ventilado",899,"Verificar dimensiones de la placa","case"],
+    ["Almacenamiento adicional","HDD SATA 1 TB",799,"Precio estimado para archivos","hdd"]
+  ]}]
+};
+
+const ramOptions = {
+  "16kit": { name:"16 GB DDR4 3200 MHz (2 × 8 GB)", price:1199, specs:"Kit de doble canal; referencia de precio, confirma el modelo exacto", image:"ram" },
+  "16single": { name:"16 GB DDR4 3200 MHz (1 × 16 GB)", price:1500, specs:"Un módulo DDR4; precio estimado", image:"ram" },
+  "32kit": { name:"32 GB DDR4 3200 MHz (2 × 16 GB)", price:2399, specs:"Kit de doble canal; precio de referencia, puede variar", image:"ram" },
+  "8ddr3": { name:"8 GB DDR3 1600 MHz (2 × 4 GB)", price:396, specs:"Precio publicado en Mercado Libre; solo para placas DDR3 antiguas", image:"ddr3" },
+  "16ddr3": { name:"16 GB DDR3 1600 MHz (2 × 8 GB)", price:792, specs:"Precio estimado; confirma el máximo soportado por la placa", image:"ddr3" }
+};
+function actualizarOpcionesRAM(){
+  const plataforma = $("plataforma-select").value;
+  const select = $("ram-select");
+  const actual = select.value;
+  if(plataforma === "intel-ddr3" || plataforma === "amd-ddr3"){
+    select.innerHTML = '<option value="8ddr3">8 GB DDR3 1600 MHz (2 × 4 GB) — $396 MXN</option><option value="16ddr3">16 GB DDR3 1600 MHz (2 × 8 GB) — $792 MXN (estimado)</option>';
+    select.value = actual === "16ddr3" ? "16ddr3" : "8ddr3";
+  } else {
+    select.innerHTML = '<option value="16kit">16 GB DDR4 3200 MHz (2 × 8 GB) — $1,199 MXN</option><option value="16single">16 GB DDR4 3200 MHz (1 × 16 GB) — $1,500 MXN (estimado)</option><option value="32kit">32 GB DDR4 3200 MHz (2 × 16 GB) — $2,399 MXN</option>';
+    select.value = ["16kit","16single","32kit"].includes(actual) ? actual : "16kit";
+  }
+}
 function aplicarRAM(pc){
-  const opcion = ramOptions[$("ram-select").value] || ramOptions["32kit"];
+  const opcion = ramOptions[$("ram-select").value] || ramOptions["16kit"];
   const copia = { ...pc, parts: pc.parts.map(part => {
     if (part[0] !== "Memoria RAM") return [...part];
     return ["Memoria RAM", opcion.name, opcion.price, opcion.specs, opcion.image];
   })};
   return copia;
+}
+
+const caseOptions = {
+  micro: { name:"Gabinete Micro-ATX ventilado", price:899, specs:"Opción básica; confirma formato de tarjeta madre, espacio de GPU y ventilación", image:"case" },
+  starker: { name:"XPG STARKER AIR BTF negro", price:1549, specs:"Torre media con cristal templado, ARGB y 4 ventiladores; precio publicado en DD Tech, confirma existencia", image:"case" },
+  valor: { name:"XPG Valor Air Nano negro", price:1397, specs:"Gabinete compacto; precio de referencia de publicación en Mercado Libre, confirma modelo exacto y disponibilidad", image:"case" }
+};
+
+const gpuOptions = {
+  gtx1650: {name:"NVIDIA GeForce GTX 1650 4 GB GDDR6", price:3199, specs:"Tarjeta de entrada de generación anterior; PCIe 3.0; precio publicado en tienda mexicana, verifica existencias y conector exacto", image:"gpu1650"},
+  rx580: {name:"AMD Radeon RX 580 8 GB GDDR5", price:3173, specs:"8 GB de VRAM; consumo relativamente alto; precio de referencia de publicación en Mercado Libre; verifica versión, estado y fuente recomendada", image:"rx580"},
+  gtx1660s: {name:"NVIDIA GeForce GTX 1660 SUPER 6 GB GDDR6 (usada)", price:4000, specs:"Tarjeta usada de gama media anterior; precio de publicación en Mercado Libre; pide pruebas de temperatura y funcionamiento", image:"gtx1660s"},
+  rx6600: {name:"AMD Radeon RX 6600 8 GB GDDR6 (reacondicionada)", price:6428, specs:"Rendimiento para juegos en 1080p; precio de referencia para reacondicionada; confirma garantía y stock", image:"rx6600"}
+};
+
+function actualizarOpcionesGPU(){
+  const plataforma = $("plataforma-select").value;
+  const select = $("gpu-select");
+  const anterior = select.value;
+  select.innerHTML = '<option value="catalog">Mantener la gráfica sugerida para esta PC</option><option value="gtx1650">NVIDIA GeForce GTX 1650 4 GB — $3,199 MXN</option><option value="rx580">AMD Radeon RX 580 8 GB — $3,173 MXN</option><option value="gtx1660s">NVIDIA GeForce GTX 1660 SUPER 6 GB — $4,000 MXN (usada)</option><option value="rx6600">AMD Radeon RX 6600 8 GB — $6,428 MXN (reacondicionada)</option>';
+  if (anterior !== "catalog" && gpuOptions[anterior]) select.value = anterior;
+  else if (plataforma === "amd-ddr3" || plataforma === "intel-ddr3") select.value = "gtx1650";
+  else select.value = "catalog";
+}
+
+function aplicarGrafica(pc){
+  const clave = $("gpu-select").value;
+  if (clave === "catalog" || !gpuOptions[clave]) return pc;
+  const opcion = gpuOptions[clave];
+  let reemplazada = false;
+  const parts = pc.parts.map(part => {
+    if (part[0] === "Tarjeta gráfica" || part[0] === "Gráficos") {
+      reemplazada = true;
+      return ["Tarjeta gráfica", opcion.name, opcion.price, opcion.specs, opcion.image];
+    }
+    return [...part];
+  });
+  if (!reemplazada) parts.push(["Tarjeta gráfica", opcion.name, opcion.price, opcion.specs, opcion.image]);
+  return {...pc, parts};
+}
+
+function aplicarGabinete(pc){
+  const opcion = caseOptions[$("case-select").value] || caseOptions.starker;
+  return { ...pc, parts: pc.parts.map(part => {
+    if (part[0] !== "Gabinete") return [...part];
+    return ["Gabinete", opcion.name, opcion.price, opcion.specs, opcion.image];
+  })};
 }
 
 function totalPC(pc){
@@ -407,10 +650,15 @@ function renderPC(pc,budget,uso){
   const partsHTML=pc.parts.map(part=>{
     const [category,name,price,specs,imageKey]=part;
     let image=images[imageKey];
+    if(category === "Procesador" && name.includes("Intel")) image=images.intelcpu;
     if(category === "Procesador" && name.includes("5600G")) image=images.cpu5600g;
     else if(category === "Procesador" && name.includes("5500")) image=images.cpu5500;
     else if(category === "Procesador" && name.includes("5700X")) image=images.cpu5700x;
     if(category === "Tarjeta madre" && name.includes("A520M")) image=images.boardA520;
+    if(category === "Memoria RAM" && name.includes("DDR3")) image=images.ddr3;
+    if(category.includes("HDD")) image=images.hdd;
+    if(category.includes("Wi-Fi")) image=images.wifi;
+    if(category.includes("Ventilador")) image=images.fan;
     return `
       <article class="part">
         <img src="${image}" alt="Imagen ilustrativa de ${category}" loading="lazy"
@@ -451,7 +699,14 @@ function renderPC(pc,budget,uso){
 }
 
 function elegirConfiguracion(uso, budget) {
-  const opciones = catalog[uso] || catalog.gaming;
+  const plataforma = $("plataforma-select").value;
+  const opciones = plataforma === "amd-ddr3"
+    ? (amdLegacyCatalog[uso] || amdLegacyCatalog.gaming)
+    : plataforma === "intel-ddr3"
+      ? (intelCatalog.legacy[uso] || intelCatalog.legacy.gaming)
+      : plataforma === "intel"
+      ? (intelCatalog.intel[uso] || intelCatalog.intel.gaming)
+      : (catalog[uso] || catalog.gaming);
   const compatibles = opciones
     .map(pc => ({ pc, total: totalPC(pc) }))
     .filter(item => item.total <= budget)
@@ -468,20 +723,26 @@ function elegirConfiguracion(uso, budget) {
   return { pc: masEconomica.pc, dentro: false };
 }
 
+$("plataforma-select").addEventListener("change", () => { actualizarOpcionesRAM(); actualizarOpcionesGPU(); });
+actualizarOpcionesRAM();
+actualizarOpcionesGPU();
+
 $("config-form").addEventListener("submit", event => {
   event.preventDefault();
 
   const budget = Number($("presupuesto").value);
   const uso = obtenerUso();
 
-  if (!Number.isFinite(budget) || budget < 4000 || budget > 100000) {
-    alert("Escribe un presupuesto entre $4,000 y $100,000 MXN.");
+  if (!Number.isFinite(budget) || budget < 3000 || budget > 100000) {
+    alert("Escribe un presupuesto entre $3,000 y $100,000 MXN.");
     $("presupuesto").focus();
     return;
   }
 
   const seleccion = elegirConfiguracion(uso, budget);
   seleccion.pc = aplicarRAM(seleccion.pc);
+  seleccion.pc = aplicarGrafica(seleccion.pc);
+  seleccion.pc = aplicarGabinete(seleccion.pc);
   seleccion.dentro = totalPC(seleccion.pc) <= budget;
   renderPC(seleccion.pc, budget, uso);
 
