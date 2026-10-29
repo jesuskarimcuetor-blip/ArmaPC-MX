@@ -649,20 +649,27 @@ function renderPC(pc,budget,uso){
 
   const partsHTML=pc.parts.map(part=>{
     const [category,name,price,specs,imageKey]=part;
-    let image=images[imageKey];
+    let image=images[imageKey] || images.cpu;
+    // Selección de foto por modelo/categoría para que cada pieza muestre una imagen apropiada.
     if(category === "Procesador" && name.includes("Intel")) image=images.intelcpu;
-    if(category === "Procesador" && name.includes("5600G")) image=images.cpu5600g;
+    else if(category === "Procesador" && name.includes("5600G")) image=images.cpu5600g;
     else if(category === "Procesador" && name.includes("5500")) image=images.cpu5500;
     else if(category === "Procesador" && name.includes("5700X")) image=images.cpu5700x;
+    else if(category === "Procesador" && /Athlon|Phenom|FX-|Ryzen/i.test(name)) image=images.cpu;
     if(category === "Tarjeta madre" && name.includes("A520M")) image=images.boardA520;
     if(category === "Memoria RAM" && name.includes("DDR3")) image=images.ddr3;
-    if(category.includes("HDD")) image=images.hdd;
-    if(category.includes("Wi-Fi")) image=images.wifi;
+    if(category.includes("Almacenamiento") && /HDD|disco duro/i.test(name)) image=images.hdd;
+    if(category.includes("Almacenamiento") && /SSD|NVMe/i.test(name)) image=images.ssd;
+    if(category.includes("Wi-Fi") || category.includes("Conectividad")) image=images.wifi;
     if(category.includes("Ventilador")) image=images.fan;
+    if(category === "Disipador") image=images.cooler;
+    if(category === "Gráficos" && /integrados|Intel UHD|Radeon integrados/i.test(name)) image=images.cpu;
+    const alt = `${category}: ${name}`.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+    // Si una tienda retira su imagen, muestra una tarjeta ilustrada con el nombre de la pieza.
+    const fallback = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240"><rect width="320" height="240" rx="18" fill="#16243a"/><rect x="25" y="25" width="270" height="135" rx="12" fill="#0b1321" stroke="#39d8f2" stroke-width="3"/><text x="160" y="88" fill="#39d8f2" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">ArmaPC MX</text><text x="160" y="120" fill="#f4f7ff" font-family="Arial" font-size="15" text-anchor="middle">${category.replace(/[<>&]/g, "")}</text><text x="160" y="195" fill="#f4f7ff" font-family="Arial" font-size="13" text-anchor="middle">Foto no disponible</text></svg>`);
     return `
       <article class="part">
-        <img src="${image}" alt="Imagen ilustrativa de ${category}" loading="lazy"
-          onerror="this.onerror=null;this.src='https://media.ldlc.com/r1600/ld/products/00/06/04/69/LD0006046927.jpg'">
+        <img src="${image}" alt="${alt}" title="${alt}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
         <div>
           <h4>${category}: ${name}</h4>
           <p class="specs">${specs}</p>
@@ -774,3 +781,4 @@ actualizarBotones();
 </script>
 </body>
 </html>
+
